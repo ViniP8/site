@@ -20,7 +20,9 @@
             --section-y: 3rem;
             --section-y-tight: 2.4rem;
             --nav-y: 0.65rem;
-            --hero-min-h: 64vh;
+            
+            /* Aumentado para mostrar melhor a fachada */
+            --hero-min-h: 85vh;
 
             --title-hero: clamp(2.5rem, 5vw, 4.25rem);
             --title-section: clamp(2rem, 3vw, 3rem);
@@ -51,9 +53,9 @@
             position: relative;
             background:
                 linear-gradient(180deg, rgba(9, 9, 11, 0.45) 0%, rgba(9, 9, 11, 0.88) 100%),
-                url('Fachada.jpg');
+                url('Fachada.jpeg');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center center;
             min-height: var(--hero-min-h);
             display: flex;
             align-items: center;
@@ -105,53 +107,45 @@
             background: linear-gradient(90deg, transparent, rgba(251, 191, 36, .22), transparent);
         }
 
-        /* Imagens com ajuste fácil por bloco:
-           style="--w: 120px; --h: 160px; --fit: cover;"
-           style="--ratio: 16 / 9; --fit: contain;"
-        */
+        /* AJUSTE DE IMAGENS FÁCIL */
         .media {
             width: var(--w, 100%);
             height: var(--h, auto);
             aspect-ratio: var(--ratio, auto);
             overflow: hidden;
-            border-radius: var(--radius, 18px);
+            border-radius: var(--radius, 14px);
             background: transparent;
         }
 
         .media img {
             width: 100%;
             height: 100%;
+            /* 'contain' garante que a foto nunca seja cortada. Mude para 'cover' se quiser preencher o box. */
             object-fit: var(--fit, contain);
             display: block;
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
         }
 
-        .media:hover img {
-            transform: scale(1.02);
-        }
+        .media:hover img { transform: scale(1.02); }
 
-        /* Imagens sem borda/moldura */
         .flat-media {
             width: var(--w, 100%);
             height: var(--h, auto);
             aspect-ratio: var(--ratio, auto);
             overflow: hidden;
-            border-radius: var(--radius, 18px);
+            border-radius: var(--radius, 14px);
             background: transparent;
             border: none;
             box-shadow: none;
         }
 
         .flat-media img {
-            width: 100%;
+            width: auto;
             height: 100%;
             object-fit: var(--fit, contain);
             display: block;
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        .flat-media:hover img {
-            transform: scale(1.02);
+            border-radius: inherit;
         }
 
         .service-bubbles {
@@ -211,11 +205,6 @@
             transition: transform .25s ease, border-color .25s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(251, 191, 36, .28);
-        }
-
         .feature-card::before {
             content: "\f1ad";
             font-family: "Font Awesome 6 Free";
@@ -244,23 +233,12 @@
             box-shadow: 0 18px 50px rgba(0, 0, 0, .26);
         }
 
-        .profile-name {
-            font-size: 1.08rem;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-        }
-
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        .marquee-wrapper {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
+        .marquee-wrapper { overflow: hidden; width: 100%; position: relative; }
         .marquee-content {
             display: flex;
             gap: 1.25rem;
@@ -268,51 +246,20 @@
             animation: scroll 35s linear infinite;
         }
 
-        .marquee-content img {
-            width: 320px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, .20);
-        }
 
-        .contact-btn {
-            box-shadow: 0 16px 40px rgba(251, 191, 36, .16);
-        }
-
-        .micro-label {
-            font-size: var(--text-micro);
-            letter-spacing: .22em;
-            text-transform: uppercase;
-        }
-
-        .body-base { font-size: var(--text-base); }
-        .body-small { font-size: var(--text-small); }
-
-        .divider-mid {
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            .divider-mid::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 12px;
-                bottom: 12px;
-                width: 1px;
-                background: rgba(255,255,255,.10);
-            }
-        }
-
-        /* Faz as colunas de imagens se esticarem como o bloco de texto */
-        .stretch-row {
-            align-items: stretch;
-        }
-
-        .full-height {
-            height: 100%;
+        /* Seção Serviços: Aumentada */
+        .service-images {
+            display: grid;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
             min-height: 0;
+        }
+
+
+
+        @media (max-width: 1023px) {
+            .service-images { height: auto; grid-template-rows: auto auto auto; }
+            .service-image-row .flat-media { aspect-ratio: 16 / 9; }
         }
     </style>
 </head>
@@ -326,16 +273,14 @@
                     Eletro <span class="text-yellow-500">Energia</span>
                 </span>
             </div>
-
             <div class="hidden md:flex items-center space-x-8 font-bold text-[9px] uppercase tracking-[0.22em]">
+            <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
                 <a href="#atendimentos" class="hover:text-yellow-500 transition text-zinc-400">Serviços</a>
                 <a href="#estrutura" class="hover:text-yellow-500 transition text-zinc-400">Estrutura</a>
-                <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
+                
                 <a href="#equipamentos" class="hover:text-yellow-500 transition text-zinc-400">Equipamentos</a>
                 <a href="#galeria" class="hover:text-yellow-500 transition text-zinc-400">Galeria</a>
-                <a href="#contato" class="bg-yellow-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all font-black">
-                    Contato
-                </a>
+                <a href="#contato" class="bg-yellow-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all font-black">Contato</a>
             </div>
         </div>
     </nav>
@@ -344,13 +289,8 @@
         <div class="container mx-auto px-6">
             <div class="max-w-2xl">
                 <span class="text-yellow-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">Ponta Grossa - PR</span>
-                <h1 class="hero-title font-black text-white mb-5 uppercase">
-                    Eletro Energia <br>
-                    <span class="yellow-gradient-text">Motores Elétricos</span>
-                </h1>
-                <p class="body-base text-zinc-300 border-l-2 border-yellow-500 pl-6 max-w-xl leading-relaxed">
-                    Infraestrutura completa para rebobinagem e manutenção de motores industriais.
-                </p>
+                <h1 class="hero-title font-black text-white mb-5 uppercase">Eletro Energia <br><span class="yellow-gradient-text">Motores Elétricos</span></h1>
+                <p class="body-base text-zinc-300 border-l-2 border-yellow-500 pl-6 max-w-xl leading-relaxed">Infraestrutura completa para rebobinagem e manutenção de motores industriais.</p>
             </div>
         </div>
     </header>
@@ -359,122 +299,164 @@
     <section class="relative -mt-10 z-10">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="stats-card p-7 rounded-2xl text-center hover:border-yellow-500/30 transition">
-                    <p class="text-yellow-500 micro-label mb-1">Fundação</p>
-                    <p class="text-4xl font-black text-white tracking-tight">1998</p>
-                </div>
-                <div class="stats-card p-7 rounded-2xl text-center hover:border-yellow-500/30 transition">
-                    <p class="text-yellow-500 micro-label mb-1">Área Própria</p>
-                    <p class="text-4xl font-black text-white tracking-tight">2300m²</p>
-                </div>
-                <div class="stats-card p-7 rounded-2xl text-center hover:border-yellow-500/30 transition">
-                    <p class="text-yellow-500 micro-label mb-1">Motores de até</p>
-                    <p class="text-4xl font-black text-white tracking-tight">2000CV</p>
-                </div>
-                <div class="stats-card p-7 rounded-2xl text-center hover:border-yellow-500/30 transition">
-                    <p class="text-yellow-500 micro-label mb-1">Foco</p>
-                    <p class="text-4xl font-black text-white tracking-tight">Industrial</p>
-                </div>
+                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Fundação</p><p class="text-4xl font-black">1998</p></div>
+                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Área Própria</p><p class="text-4xl font-black">2300m²</p></div>
+                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Até</p><p class="text-4xl font-black">2000CV</p></div>
+                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Foco</p><p class="text-4xl font-black">Industrial</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Nós -->
-    <section id="sobre" class="section-pad-tight">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <h2 class="section-title font-black uppercase mb-10">
-                Sobre Nós
-            </h2>
-            <div class="section-divider mb-10"></div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                <div class="profile-card rounded-3xl p-5 md:p-6">
-                    <div class="flex items-center gap-5">
-                        <div class="media flex-shrink-0" style="--w: 110px; --h: 146px; --fit: cover; --radius: 16px;">
-                            <img src="Mauro.jpeg" alt="Mauro Francisco Penckowski">
-                        </div>
+<br><br>
 
-                        <div class="min-w-0">
-                            <h3 class="profile-name font-black uppercase tracking-tight mb-3">
-                                Mauro Francisco Penckowski
-                            </h3>
-                            <div class="space-y-2 text-zinc-300 body-small leading-relaxed">
-                                <p>Mais de 50 anos de experiência na área de motores elétricos.</p>
-                                <p>email</p>
-                                <p>Telefone</p>
-                            </div>
-                        </div>
+
+
+
+
+<!-- Sobre Nós -->
+<section id="sobre" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="section-title font-black uppercase mb-4">Sobre <span class="text-yellow-500">Nós</span></h2>
+        <p class="text-center text-zinc-500 uppercase tracking-[0.3em] text-[10px] mb-10 font-bold">Experiência e Qualificação Técnica</p>
+        <div class="section-divider mb-12"></div>
+
+        <!-- Texto Institucional -->
+        <div class="max-w-4xl mx-auto mb-16 text-zinc-300 leading-relaxed text-center">
+            <p class="mb-6">
+                Fundada em 1998 em Ponta Grossa, a <strong>Eletro Energia</strong> consolidou-se como referência regional na manutenção e rebobinagem de máquinas elétricas industriais. Nossa trajetória é pautada pelo compromisso com a excelência técnica e pela busca contínua por soluções que garantam a máxima produtividade dos nossos clientes.
+            </p>
+            <p>
+                Unimos a solidez de décadas de experiência prática ao rigor da engenharia moderna. Com uma infraestrutura preparada para atender motores de até 2000CV, operamos sob rígidos padrões de qualidade, assegurando que cada equipamento retorne à operação com confiabilidade, eficiência energética e durabilidade superior.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 items-stretch">
+            <!-- Mauro -->
+            <div class="profile-card rounded-[2rem] p-8 md:p-10 border border-white/5 relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
+                
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 220px; --h: 300px; --fit: cover; --radius: 20px;">
+                        <img src="Mauro.jpeg" alt="Mauro Francisco Penckowski">
+                    </div>
+                    
+                    <div class="flex-1">
+                        <span class="text-[9px] font-black bg-yellow-500 text-zinc-950 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Fundador & Especialista</span>
+                        <h3 class="text-3xl font-black uppercase text-yellow-500 tracking-tighter mb-4 leading-none">
+                            Mauro Francisco <br>Penckowski
+                        </h3>
+                        
+                        <ul class="space-y-3 text-zinc-300 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-yellow-500 mt-1"></i>
+                                <span>Fundador da Eletro Energia Motores Elétricos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-yellow-500 mt-1"></i>
+                                <span>Mais de 50 anos de experiência prática em motores elétricos.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </div>
 
-                <div class="profile-card rounded-3xl p-5 md:p-6 divider-mid md:pl-7">
-                    <div class="flex items-center gap-5">
-                        <div class="media flex-shrink-0" style="--w: 110px; --h: 146px; --fit: cover; --radius: 16px;">
-                            <img src="Vinicius.jpeg" alt="Vinícius Penckowski">
-                        </div>
+            <!-- Vinicius -->
+            <div class="profile-card rounded-[2rem] p-8 md:p-10 border border-white/5 relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
 
-                        <div class="min-w-0">
-                            <h3 class="profile-name font-black uppercase tracking-tight mb-3">
-                                Vinícius Penckowski
-                            </h3>
-                            <div class="space-y-2 text-zinc-300 body-small leading-relaxed">
-                                <p>Engenheiro Eletricista pela UTFPR e Mestre pelo IPB</p>
-                                <p>Responsável Técnico – CREA PR-207374/D</p>
-                            </div>
-                        </div>
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 180px; --h: 300px; --fit: cover; --radius: 20px;">
+                        <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Vinícius Penckowski">
+                    </div>
+                    
+                    <div class="flex-1">
+                        <span class="text-[9px] font-black bg-zinc-800 text-yellow-500 border border-yellow-500/30 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Responsável Técnico</span>
+                        <h3 class="text-3xl font-black uppercase text-yellow-500 tracking-tighter mb-4 leading-none">
+                            Vinícius <br>Penckowski
+                        </h3>
+                        
+                        <ul class="space-y-3 text-zinc-300 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-graduation-cap text-yellow-500 mt-1"></i>
+                                <span>Engenheiro Eletricista formado pela UTFPR.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-award text-yellow-500 mt-1"></i>
+                                <span>Mestre em Engenharia Industrial pelo IPB (Portugal).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-id-card text-yellow-500 mt-1"></i>
+                                <span>Registro Profissional: CREA PR-207374/D.</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Nossos Serviços -->
-    <section id="atendimentos" class="section-pad">
+
+
+<!-- Nossos Serviços -->
+    <section id="atendimentos" class="section-pad ">
         <div class="container mx-auto px-6">
-            <h2 class="section-title font-black text-white uppercase tracking-tighter mb-8">
-                Nossos <span class="text-yellow-500">Serviços</span>
-            </h2>
-            <div class="section-divider mb-8"></div>
+            <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Serviços</span></h2>
+            <div class="section-divider mb-12"></div>
+            
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                <!-- Painel de Lista de Serviços -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-[2rem] p-8 h-full border border-white/5 shadow-2xl">
+                        <div class="mb-8">
+                            <h3 class="text-yellow-500 font-black uppercase tracking-[0.2em] text-lg mb-2">
+                                <i class="fas fa-tools mr-2"></i> Trabalhamos com:
+                            </h3>
+                            <div class="w-12 h-1 bg-yellow-500/30 rounded-full"></div>
+                        </div>
 
-            <div class="grid lg:grid-cols-12 gap-8 items-stretch stretch-row">
-                <!-- Lista -->
-                <div class="lg:col-span-5 full-height">
-                    <div class="glass-panel rounded-3xl p-6 md:p-7 full-height">
-                        <ul class="service-bubbles">
-                            <li>Motores elétricos até 2000CV;</li>
-                            <li>Motoredutores;</li>
-                            <li>Motobombas;</li>
-                            <li>Motoexaustores;</li>
-                            <li>Sopradores;</li>
-                            <li>Geradores;</li>
-                            <li>Motores de corrente-contínua;</li>
-                            <li>Repotencialização de motores;</li>
-                            <li>Modificação de frequência;</li>
-                            <li>Modificação de tensão;</li>
-                            <li>Modificação de rotação;</li>
-                            <li>Motores com múltiplas velocidades;</li>
-                            <li>Serviços em caráter emergencial;</li>
+                        <ul class="service-bubbles gap-3">
+                            <li>Motores Elétricos</li>
+                            <li>Motoexaustores</li>
+                            <li>Motoredutores</li>
+                            <li>Motobombas</li>
+                            <li>Sopradores</li>
+                            <li>Geradores</li>
+                            <li>Motores com múltiplas velocidades</li>
+                            <li>Motores de Corrente Contínua</li>
+                            <li>Repotencialização de motores</li>
+                            <li>Modificação de frequência</li>
+                            <li>Modificação de tensão</li>
+                            <li>Modificação de rotação</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Imagens sem moldura -->
-                <div class="lg:col-span-7 full-height">
-                    <div class="grid grid-rows-[1fr_1fr_0.9fr] gap-5 full-height min-h-[760px]">
-                        <div class="flat-media" style="--fit: contain; --radius: 18px;">
-                            <img src="Motor2000CVMauro.jpg" alt="Motor 2000CV">
-                        </div>
-
-                        <div class="flat-media" style="--fit: contain; --radius: 18px;">
-                            <img src="MotorSuspenso.jpg" alt="Motor Suspenso">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-5">
-                            <div class="flat-media" style="--fit: contain; --radius: 18px;">
-                                <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Máquinas Elétricas">
+                <!-- Painel de Imagens (Ajustado para o tamanho real da foto) -->
+                <div class="lg:col-span-7">
+                    <div class="flex flex-col gap-6">
+                        <!-- Imagem 1: Motor 2000CV -->
+                        <div class="flat-media group relative h-auto overflow-hidden shadow-2xl" 
+                             style="--radius: 24px; background: rgba(0,0,0,0.2);">
+                            <img src="Motor2000CV.jpg" 
+                                 class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                 style="border-radius: 24px;" 
+                                 alt="Motor 2000CV">
+                            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Manutenção de Grande Porte</span>
                             </div>
-                            <div class="flat-media" style="--fit: contain; --radius: 18px;">
-                                <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Máquinas Elétricas - Provisório">
+                        </div>
+
+                        <!-- Imagem 2: Motor Suspenso -->
+                        <div class="flat-media group relative h-auto overflow-hidden shadow-2xl" 
+                             style="--radius: 24px; background: rgba(0,0,0,0.2);">
+                            <img src="550cv.jpg" 
+                                 class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                 style="border-radius: 24px;" 
+                                 alt="Motor Suspenso">
+                            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Pequeno e médio porte</span>
                             </div>
                         </div>
                     </div>
@@ -483,167 +465,268 @@
         </div>
     </section>
 
-    <!-- Nossa Estrutura -->
+
+<!-- Nossa Estrutura -->
     <section id="estrutura" class="section-pad-tight bg-zinc-900/25 border-y border-white/5">
         <div class="container mx-auto px-6">
-            <h2 class="section-title font-black uppercase mb-8">
-                Nossa <span class="text-yellow-500">Estrutura</span>
-            </h2>
-            <div class="section-divider mb-8"></div>
+            <h2 class="section-title font-black uppercase mb-8">Nossa <span class="text-yellow-500">Estrutura</span></h2>
+            <div class="section-divider mb-12"></div>
+            
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- Coluna de Escrita (Aumentada para 6 colunas - Metade da tela) -->
+                <div class="lg:col-span-6">
+                    <div class="glass-panel rounded-[2rem] p-8 md:p-10 border border-white/5 shadow-2xl">
+                        <div class="mb-8">
+                            <h3 class="text-yellow-500 font-black uppercase tracking-[0.2em] text-lg mb-2">
+                                <i class="fas fa-warehouse mr-2"></i> Contamos com:
+                            </h3>
+                            <div class="w-12 h-1 bg-yellow-500/30 rounded-full"></div>
+                        </div>
 
-            <div class="grid lg:grid-cols-12 gap-10 items-stretch stretch-row">
-                <div class="lg:col-span-5 full-height flex flex-col gap-5">
-                    <div class="flat-media full-height" style="--ratio: 16 / 10; --fit: contain; --radius: 18px;">
-                        <img src="BobinagemManual.jpeg" alt="Bobinagem Manual">
-                    </div>
+                        <!-- Ocupando largura total para o texto não vazar -->
+                        <div class="flex flex-col gap-3 w-full">
 
-                    <div class="flat-media full-height" style="--ratio: 16 / 10; --fit: contain; --radius: 18px;">
-                        <img src="VistaInterna2.jpg" alt="Vista Interna">
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 full-height">
-                    <div class="glass-panel rounded-3xl p-6 md:p-7 full-height">
-                        <div class="feature-cards">
-                            <div class="feature-card">Sistemas para motores 220V, 380V e 440V;</div>
-                            <div class="feature-card">Fios de cobre ASTA (PPE / São Marco);</div>
-                            <div class="feature-card">Exaustores com controle eletrônico;</div>
-                            <div class="feature-card">Fios e papéis isolantes de classe H;</div>
-                            <div class="feature-card">Megômetros digitais e analógicos;</div>
-                            <div class="feature-card">Cabine de pintura pulverizadora;</div>
-                            <div class="feature-card">Estufas com controle eletrônico;</div>
-                            <div class="feature-card">Ponte rolante para 5 toneladas;</div>
-                            <div class="feature-card">Paineis de teste com inversor;</div>
-                            <div class="feature-card">Tanque de envernizamento;</div>
-                            <div class="feature-card">Balanceador eletrônico;</div>
-                            <div class="feature-card">Bobinadeira eletrônica;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Sistemas e painéis de teste de motores;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Exaustores com controle eletrônico;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Fios e papéis isolantes de classe H;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Megômetros digitais e analógicos;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Testes com soft-start e inversor;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Cabine de pintura pulverizadora;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Estufas com controle eletrônico;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Ponte rolante para 5 toneladas;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Tanque de envernizamento;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Balanceador eletrônico;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Bobinadeira eletrônica;</div>
+                            <div class="feature-card w-full whitespace-nowrap">Fios de cobre ASTA;</div>
+                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
+                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
+                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
+                            
                         </div>
                     </div>
                 </div>
+
+                <!-- Coluna de Imagens (Reduzida para 6 colunas e altura menor) -->
+                <div class="lg:col-span-6 flex flex-col gap-6">
+                    <!-- Imagem 1 -->
+                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="BobinagemManual.jpeg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
+                        <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Processos de Precisão</span>
+                        </div>
+                    </div>
+
+                    <!-- Imagem 2 -->
+                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="VistaInterna2.jpg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
+                        <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Amplo Espaço</span>
+                        </div>
+                    </div>
+
+                    <!-- Imagem 3 (Repetida) -->
+                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="MotorSuspenso.jpg" class="h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
+                        <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Qualidade Garantida</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-
-    <!-- Equipamentos -->
+    <!-- Equipamentos Grid -->
     <section id="equipamentos" class="section-pad">
         <div class="container mx-auto px-6">
-            <h2 class="section-title font-black text-white uppercase italic tracking-tighter mb-8">
-                Equipamentos e <span class="text-yellow-500">Infraestrutura</span>
-            </h2>
-            <div class="section-divider mb-8"></div>
-
+            <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Estufas.jpeg" alt="Estufas">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Estufas</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Pintura.jpeg" alt="Cabine de Pintura">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Cabine de Pintura</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="BobinadeiraAutomatica.jpg" alt="Bobinadeira">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Bobinadeira</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Balanceador.jpeg" alt="Balanceador">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Balanceador</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Paineis1.jpeg" alt="Painéis">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Painéis 1</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Painel2.jpeg" alt="Painel 2">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Painel 2</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Painel3.jpeg" alt="Painel 3">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Painel 3</p>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="media w-full" style="--ratio: 4 / 3; --fit: cover; --radius: 16px;">
-                        <img src="Teste_CC.jpeg" alt="Teste CC">
-                    </div>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-3">Teste CC</p>
-                </div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="text-[10px] mt-2">Estufas</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="text-[10px] mt-2">Cabine de Pintura</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="text-[10px] mt-2">Bobinadeira automática</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="text-[10px] mt-2">Balanceador</p></div>
+            </div>
+            <br>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="text-[10px] mt-2">Paineis</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="text-[10px] mt-2">Suportes</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="text-[10px] mt-2">Testes CC/CA</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="text-[10px] mt-2">Tanque de envernizamento</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Galeria -->
-    <section id="galeria" class="section-pad-tight overflow-hidden bg-zinc-900/18">
-        <div class="container mx-auto px-6 mb-8">
-            <h2 class="section-title font-black uppercase italic tracking-tighter">
-                Galeria de <span class="text-zinc-500">Processos</span>
-            </h2>
-            <div class="section-divider mt-6"></div>
-        </div>
 
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <img src="BobinadeiraAutomatica.jpg" alt="">
-                <img src="BobinasGrandes.jpg" alt="">
-                <img src="MotorRebobinado.jpeg" alt="">
-                <img src="Paineis1.jpeg" alt="">
-                <img src="Pintura.jpeg" alt="">
-                <img src="Sacador.jpeg" alt="">
-                <img src="Balanceador.jpeg" alt="">
-                <img src="Teste_CC.jpeg" alt="">
-                <img src="Painel2.jpeg" alt="">
-                <img src="BobinadeiraAutomatica.jpg" alt="">
-                <img src="BobinasGrandes.jpg" alt="">
-                <img src="MotorRebobinado.jpeg" alt="">
-                <img src="Paineis1.jpeg" alt="">
-                <img src="Pintura.jpeg" alt="">
-                <img src="Sacador.jpeg" alt="">
-                <img src="Balanceador.jpeg" alt="">
-                <img src="Teste_CC.jpeg" alt="">
-                <img src="Painel2.jpeg" alt="">
+<section id="galeria" class="py-12 bg-zinc-950 border-y border-white/5 overflow-hidden">
+    <div class="container mx-auto px-6">
+        <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
+    </div>
+    
+    <div class="marquee-wrapper relative">
+        <div class="marquee-content flex gap-4 animate-scroll">
+            
+            <div class="marquee-item"><img src="A1.jpg" onerror="this.src='A1.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A2.jpg" onerror="this.src='A2.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A3.jpg" onerror="this.src='A3.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A4.jpg" onerror="this.src='A4.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A5.jpg" onerror="this.src='A5.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A6.jpg" onerror="this.src='A6.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A7.jpg" onerror="this.src='A7.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A8.jpg" onerror="this.src='A8.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
+
+            <div class="marquee-item"><img src="A1.jpg" onerror="this.src='A1.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A2.jpg" onerror="this.src='A2.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A3.jpg" onerror="this.src='A3.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A4.jpg" onerror="this.src='A4.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A5.jpg" onerror="this.src='A5.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A6.jpg" onerror="this.src='A6.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A7.jpg" onerror="this.src='A7.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A8.jpg" onerror="this.src='A8.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
+            <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Container de cada item */
+.marquee-item {
+    flex-shrink: 0;
+    width: 280px; /* Largura fixa */
+    aspect-ratio: 4 / 5; /* Força a proporção Retrato 4:5 */
+    background-color: #18181b; /* Cor de fundo caso a imagem demore a carregar (zinc-900) */
+    border-radius: 0.75rem; /* rounded-xl */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* A imagem em si */
+.marquee-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o ZOOM automático para preencher os 4:5 sem distorcer */
+    object-position: center; /* Mantém o centro da foto visível */
+    display: block;
+}
+
+/* Estrutura do Marquee */
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+}
+
+/* Animação do Scroll */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Move exatamente metade do conteúdo (a parte duplicada) */
+        transform: translateX(calc(-50% - 0.5rem)); 
+    }
+}
+
+/* Pausa ao passar o mouse */
+.marquee-wrapper:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Ajuste Responsivo para Celular */
+@media (max-width: 640px) {
+    .marquee-item {
+        width: 200px;
+    }
+}
+</style>
+
+
+<center>
+<footer id="contato" class="bg-zinc-950 py-16 border-t border-white/5">
+    <div class="container mx-auto px-6">
+        <!-- Título alinhado com a grid -->
+        <h2 class="section-title font-black uppercase mb-10 text-white text-2xl">Contato</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 items-start mb-16">
+
+            <!-- Coluna 1: Info Empresa -->
+            <div>
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                    Eletro Energia
+                </h4>
+                <p class="text-zinc-400 text-sm leading-relaxed mb-5 max-w-xs">
+                    Especialistas em manutenção e rebobinagem de motores elétricos desde 1998 em Ponta Grossa.
+                </p>
+                <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
+                <p class="text-zinc-600 text-[10px] font-mono">
+                    CNPJ: 02.548.933/0001-43
+                </p>
+            </div>
+
+            <!-- Coluna 2: Localização -->
+            <div>
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                    Localização
+                </h4>
+                <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+                    Rua José do Patrocínio, 222<br>
+                    Vila Estrela — Ponta Grossa - PR
+                </p>
+                <!-- MAPA MAIS COMPACTO -->
+                <div class="w-full h-32 rounded-lg overflow-hidden mb-3 border border-white/5">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Rua+José+do+Patrocínio,+222,+Ponta+Grossa+PR&output=embed"
+                        class="w-full h-full grayscale opacity-80 hover:grayscale-0 transition-all duration-500" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank"
+                   class="text-yellow-500 hover:text-yellow-400 text-[10px] font-bold uppercase tracking-widest transition">
+                    Ver no Google Maps
+                </a>
+            </div>
+
+            <!-- Coluna 3: WhatsApp (Agora alinhada no topo) -->
+            <div>
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                    WhatsApp
+                </h4>
+                <a href="https://wa.me/5542999723775"
+                   class="group inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 transition-all duration-300 text-white px-6 py-3 rounded-md font-bold uppercase text-[11px] shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current">
+                        <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.756 5.707 2.188 8.188L0 32l7.613-2.156a15.94 15.94 0 0 0 8.387 2.336h.006c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.23c-2.523 0-4.996-.676-7.156-1.957l-.512-.305-4.52 1.281 1.207-4.402-.332-.539a13.42 13.42 0 0 1-2.055-7.207c0-7.41 6.027-13.438 13.438-13.438s13.438 6.027 13.438 13.438-6.027 13.438-13.438 13.438zm7.383-10.094c-.402-.201-2.379-1.176-2.746-1.309-.367-.134-.635-.201-.904.201-.268.402-1.039 1.309-1.273 1.578-.234.268-.469.301-.871.1-.402-.201-1.699-.626-3.236-1.996-1.195-1.066-2.004-2.379-2.238-2.781-.234-.402-.025-.619.176-.82.18-.179.402-.469.603-.703.201-.234.268-.402.402-.67.134-.268.067-.502-.034-.703-.1-.201-.904-2.18-1.238-2.984-.326-.783-.657-.676-.904-.689l-.77-.013c-.268 0-.703.1-1.07.502s-1.402 1.371-1.402 3.342 1.438 3.873 1.637 4.141c.201.268 2.83 4.32 6.857 6.055.958.414 1.705.661 2.287.846.961.306 1.836.263 2.528.159.771-.115 2.379-.972 2.715-1.91.335-.938.335-1.742.234-1.91-.1-.168-.367-.268-.77-.469z"/>
+                    </svg>
+                    Conversar Agora
+                </a>
+                <p class="text-zinc-600 text-[10px] uppercase tracking-widest mt-5">
+                    Segunda a Sexta 
+                    <br>08h às 11h e das 13 ás 17h
+                </p>
             </div>
         </div>
-    </section>
 
-    <footer id="contato" class="bg-zinc-950 py-16 border-t border-white/5 text-center">
-        <div class="container mx-auto px-6">
-            <p class="text-3xl font-black uppercase italic mb-2 tracking-tighter">
-                Eletro <span class="text-yellow-500">Energia</span>
-            </p>
-            <p class="text-[10px] text-zinc-600 mb-10 uppercase tracking-[0.4em] font-bold">
-                Manutenção Industrial de Motores Elétricos
-            </p>
-
-            <a href="https://wa.me/5542999723775"
-               class="contact-btn bg-yellow-500 text-zinc-950 px-10 py-5 rounded-full font-black hover:bg-yellow-400 transition-all inline-flex items-center gap-3 uppercase text-sm tracking-widest">
-                <i class="fab fa-whatsapp text-xl"></i> Solicitar Orçamento via WhatsApp
-            </a>
-
-            <div class="mt-14 text-zinc-600 text-xs uppercase tracking-widest">
-                &copy; 2026 Eletro Energia. Ponta Grossa - PR.
+        <!-- Rodapé inferior -->
+        <div class="border-t border-white/5 pt-8 text-center">
+            <div class="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-medium">
+                © 2026 Eletro Energia • Todos os direitos reservados
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
+</center>
+
 
 </body>
 </html>
