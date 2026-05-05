@@ -27,14 +27,14 @@
             --title-hero: clamp(2.5rem, 5vw, 4.25rem);
             --title-section: clamp(2rem, 3vw, 3rem);
 
-            --text-base: 1rem;
-            --text-small: 0.92rem;
-            --text-micro: 0.78rem;
+            --text-base: 1.2rem;
+            --text-small: 1rem;
+            --text-micro: 0.9rem;
         }
 
         html {
             scroll-behavior: smooth;
-            font-size: clamp(16px, 1.25vw, 24px);
+            font-size: clamp(16px, 0.9vw + 0.5vh, 24px);
         }
 
         body {
@@ -87,6 +87,7 @@
             background: linear-gradient(180deg, rgba(24, 24, 27, .88), rgba(24, 24, 27, .64));
             border: 1px solid var(--line);
             box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+            height: 100%;
         }
 
         .stats-card {
@@ -129,7 +130,7 @@
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
         }
 
-        .media:hover img { transform: scale(1.02); }
+        .media:hover img { transform: scale(1.05); }
 
         .flat-media {
             width: var(--w, 100%);
@@ -154,7 +155,7 @@
         .service-bubbles {
             display: grid;
             grid-template-columns: 1;
-            gap: .85rem;
+            gap: 0rem;
         }
 
         .service-bubbles li {
@@ -175,6 +176,7 @@
             transform: translateY(-2px);
             border-color: rgba(251, 191, 36, .30);
             background: linear-gradient(180deg, rgba(251, 191, 36, .08), rgba(255, 255, 255, .02));
+            
         }
 
         .service-bubbles li::before {
@@ -345,7 +347,7 @@
                     </div>
                     
                     <div class="flex-1">
-                        <span class="text-[9px] font-black bg-yellow-500 text-zinc-950 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Fundador & Especialista</span>
+                        <span class="text-[12px] font-black bg-yellow-500 text-zinc-950 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Fundador & Especialista</span>
                         <h3 class="text-3xl font-black uppercase text-yellow-500 tracking-tighter mb-4 leading-none">
                             Mauro Francisco <br>Penckowski
                         </h3>
@@ -374,7 +376,7 @@
                     </div>
                     
                     <div class="flex-1">
-                        <span class="text-[9px] font-black bg-zinc-800 text-yellow-500 border border-yellow-500/30 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Responsável Técnico</span>
+                        <span class="text-[12px] font-black bg-zinc-800 text-yellow-500 border border-yellow-500/30 px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">Responsável Técnico</span>
                         <h3 class="text-3xl font-black uppercase text-yellow-500 tracking-tighter mb-4 leading-none">
                             Vinícius <br>Penckowski
                         </h3>
@@ -408,7 +410,7 @@
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Serviços</span></h2>
             <div class="section-divider mb-12"></div>
             
-            <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="grid lg:grid-cols-12 gap-10 items-stretch">
                 <!-- Painel de Lista de Serviços -->
                 <div class="lg:col-span-5">
                     <div class="glass-panel rounded-[2rem] p-8 h-full border border-white/5 shadow-2xl">
@@ -476,7 +478,7 @@
             <h2 class="section-title font-black uppercase mb-8">Nossa <span class="text-yellow-500">Estrutura</span></h2>
             <div class="section-divider mb-12"></div>
             
-            <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="grid lg:grid-cols-12 gap-10 items-stretch">
                 
                 <!-- Coluna de Escrita (Aumentada para 6 colunas - Metade da tela) -->
                 <div class="lg:col-span-6">
@@ -489,50 +491,50 @@
                         </div>
 
                         <!-- Ocupando largura total para o texto não vazar -->
-                        <div class="flex flex-col gap-3 w-full">
-
-                            <div class="feature-card w-full whitespace-nowrap">Sistemas e painéis de teste de motores;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Exaustores com controle eletrônico;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Fios e papéis isolantes de classe H;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Megômetros digitais e analógicos;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Testes com soft-start e inversor;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Cabine de pintura pulverizadora;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Estufas com controle eletrônico;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Ponte rolante para 5 toneladas;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Tanque de envernizamento;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Balanceador eletrônico;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Bobinadeira eletrônica;</div>
-                            <div class="feature-card w-full whitespace-nowrap">Fios de cobre ASTA;</div>
-                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
-                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
-                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
-                            <div class="feature-card w-full whitespace-nowrap">XXXXX;</div>
-                            
-                        </div>
+                        
+<ul class="service-bubbles gap-3">
+<li>Sistemas e painéis de teste de motores</li>
+<li>Exaustores com controle eletrônico</li>
+<li>Fios e papéis isolantes de classe H</li>
+<li>Megômetros digitais e analógicos</li>
+<li>Cabine de pintura pulverizadora</li>
+<li>Estufas com controle eletrônico</li>
+<li>Testes com soft-start e inversor</li>
+<li>Ponte rolante para 5 toneladas</li>
+<li>Testes em corrente contínua</li>
+<li>Tanque de envernizamento</li>
+<li>Sistemas de alta potência</li>
+<li>Conjunto motor/gerador</li>
+<li>Balanceador eletrônico</li>
+<li>Bobinadeira eletrônica</li>
+<li>Fios de cobre ASTA</li>
+<li>Fichas de controle</li>
+<li>XXX</li>
+</ul>
                     </div>
                 </div>
 
                 <!-- Coluna de Imagens (Reduzida para 6 colunas e altura menor) -->
-                <div class="lg:col-span-6 flex flex-col gap-6">
+                <div class="lg:col-span-6 flex flex-col gap-6 h-full">
                     <!-- Imagem 1 -->
-                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="BobinagemManual.jpeg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
+                    <div class="flat-media group relative overflow-hidden flex-1" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="BobinagemManual.jpeg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Processos de Precisão</span>
                         </div>
                     </div>
 
                     <!-- Imagem 2 -->
-                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="VistaInterna2.jpg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
+                    <div class="flat-media group relative overflow-hidden flex-1" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="VistaInterna2.jpg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Amplo Espaço</span>
                         </div>
                     </div>
 
                     <!-- Imagem 3 (Repetida) -->
-                    <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="MotorSuspenso.jpg" class="h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
+                    <div class="flat-media group relative overflow-hidden flex-1" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
+                        <img src="MotorSuspenso.jpg" class="w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Qualidade Garantida</span>
                         </div>
@@ -666,27 +668,27 @@
 <footer id="contato" class="bg-zinc-950 py-16 border-t border-white/5">
     <div class="container mx-auto px-6">
         <!-- Título alinhado com a grid -->
-        <h2 class="section-title font-black uppercase mb-10 text-white text-2xl">Contato</h2>
+         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Contato</h2>
         
         <div class="grid md:grid-cols-3 gap-8 items-start mb-16">
 
             <!-- Coluna 1: Info Empresa -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
                     Eletro Energia
                 </h4>
                 <p class="text-zinc-400 text-sm leading-relaxed mb-5 max-w-xs">
                     Especialistas em manutenção e rebobinagem de motores elétricos desde 1998 em Ponta Grossa.
                 </p>
                 <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
-                <p class="text-zinc-600 md:text-sm font-mono">
+                <p class="text-zinc-600 md:text-base font-mono">
                     CNPJ: 02.548.933/0001-43
                 </p>
             </div>
 
             <!-- Coluna 2: Localização -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
                     Localização
                 </h4>
                 <p class="text-zinc-300 text-sm leading-relaxed mb-4">
@@ -697,7 +699,7 @@
                 <div class="w-full h-32 rounded-lg overflow-hidden mb-3 border border-white/5">
                     <iframe 
                         src="https://www.google.com/maps?q=Rua+José+do+Patrocínio,+222,+Ponta+Grossa+PR&output=embed"
-                        class="w-full h-full grayscale opacity-80 hover:grayscale-0 transition-all duration-500" 
+                        class="w-full h-full opacity-80 hover:grayscale-0 transition-all duration-500" 
                         loading="lazy">
                     </iframe>
                 </div>
@@ -709,7 +711,7 @@
 
             <!-- Coluna 3: WhatsApp (Agora alinhada no topo) -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-xs mb-5">
+                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
                     WhatsApp
                 </h4>
                 <a href="https://wa.me/5542999723775"
@@ -728,7 +730,7 @@
 
         <!-- Rodapé inferior -->
         <div class="border-t border-white/5 pt-8 text-center">
-            <div class="text-zinc-600 md:text-sm uppercase tracking-[0.2em] font-medium">
+            <div class="text-zinc-600 md:text-sm uppercase font-small">
                 © 2026 Eletro Energia • Todos os direitos reservados
             </div>
         </div>
