@@ -32,7 +32,10 @@
             --text-micro: 0.78rem;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            font-size: clamp(16px, 1.25vw, 24px);
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -150,7 +153,7 @@
 
         .service-bubbles {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: 1;
             gap: .85rem;
         }
 
@@ -273,7 +276,7 @@
                     Eletro <span class="text-yellow-500">Energia</span>
                 </span>
             </div>
-            <div class="hidden md:flex items-center space-x-8 font-bold text-[9px] uppercase tracking-[0.22em]">
+            <div class="hidden md:flex items-center space-x-8 font-bold text-[14px] uppercase tracking-[0.22em]">
             <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
                 <a href="#atendimentos" class="hover:text-yellow-500 transition text-zinc-400">Serviços</a>
                 <a href="#estrutura" class="hover:text-yellow-500 transition text-zinc-400">Estrutura</a>
@@ -288,7 +291,7 @@
     <header class="hero-bg">
         <div class="container mx-auto px-6">
             <div class="max-w-2xl">
-                <span class="text-yellow-500 font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">Ponta Grossa - PR</span>
+                <span class="text-yellow-500 font-bold tracking-[0.3em] uppercase md:text-sm mb-4 block">Ponta Grossa - PR</span>
                 <h1 class="hero-title font-black text-white mb-5 uppercase">Eletro Energia <br><span class="yellow-gradient-text">Motores Elétricos</span></h1>
                 <p class="body-base text-zinc-300 border-l-2 border-yellow-500 pl-6 max-w-xl leading-relaxed">Infraestrutura completa para rebobinagem e manutenção de motores industriais.</p>
             </div>
@@ -318,7 +321,7 @@
 <section id="sobre" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5">
     <div class="container mx-auto px-6 max-w-6xl">
         <h2 class="section-title font-black uppercase mb-4">Sobre <span class="text-yellow-500">Nós</span></h2>
-        <p class="text-center text-zinc-500 uppercase tracking-[0.3em] text-[10px] mb-10 font-bold">Experiência e Qualificação Técnica</p>
+        <p class="text-center text-zinc-500 uppercase tracking-[0.3em] md:text-sm mb-10 font-bold">Experiência e Qualificação Técnica</p>
         <div class="section-divider mb-12"></div>
 
         <!-- Texto Institucional -->
@@ -337,7 +340,7 @@
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
                 
                 <div class="flex flex-col lg:flex-row gap-8 items-start">
-                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 220px; --h: 300px; --fit: cover; --radius: 20px;">
+                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 14rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
                         <img src="Mauro.jpeg" alt="Mauro Francisco Penckowski">
                     </div>
                     
@@ -366,7 +369,7 @@
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
 
                 <div class="flex flex-col lg:flex-row gap-8 items-start">
-                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 180px; --h: 300px; --fit: cover; --radius: 20px;">
+                    <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 11.25rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
                         <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Vinícius Penckowski">
                     </div>
                     
@@ -444,7 +447,7 @@
                                  style="border-radius: 24px;" 
                                  alt="Motor 2000CV">
                             <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Manutenção de Grande Porte</span>
+                                <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Manutenção de Grande Porte</span>
                             </div>
                         </div>
 
@@ -456,7 +459,7 @@
                                  style="border-radius: 24px;" 
                                  alt="Motor Suspenso">
                             <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Pequeno e médio porte</span>
+                                <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Pequeno e médio porte</span>
                             </div>
                         </div>
                     </div>
@@ -513,7 +516,7 @@
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
                         <img src="BobinagemManual.jpeg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Processos de Precisão</span>
+                            <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Processos de Precisão</span>
                         </div>
                     </div>
 
@@ -521,7 +524,7 @@
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
                         <img src="VistaInterna2.jpg" class=" h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Amplo Espaço</span>
+                            <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Amplo Espaço</span>
                         </div>
                     </div>
 
@@ -529,7 +532,7 @@
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
                         <img src="MotorSuspenso.jpg" class="h-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500">Qualidade Garantida</span>
+                            <span class="md:text-sm font-bold uppercase tracking-widest text-yellow-500">Qualidade Garantida</span>
                         </div>
                     </div>
                 </div>
@@ -542,23 +545,25 @@
         <div class="container mx-auto px-6">
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="text-[10px] mt-2">Estufas</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="text-[10px] mt-2">Cabine de Pintura</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="text-[10px] mt-2">Bobinadeira automática</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="text-[10px] mt-2">Balanceador</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="md:text-sm mt-2">Estufas</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="md:text-sm mt-2">Cabine de Pintura</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="md:text-sm mt-2">Bobinadeira automática</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="md:text-sm mt-2">Balanceador</p></div>
             </div>
             <br>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="text-[10px] mt-2">Paineis</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="text-[10px] mt-2">Suportes</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="text-[10px] mt-2">Testes CC/CA</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="text-[10px] mt-2">Tanque de envernizamento</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="md:text-sm mt-2">Paineis</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="md:text-sm mt-2">Suportes</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="md:text-sm mt-2">Testes CC/CA</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="md:text-sm mt-2">Tanque de envernizamento</p></div>
             </div>
         </div>
     </section>
 
 
-<section id="galeria" class="py-12 bg-zinc-950 border-y border-white/5 overflow-hidden">
+
+
+<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5">
     <div class="container mx-auto px-6">
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
@@ -577,6 +582,7 @@
             <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
             <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
             <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
+                        <div class="marquee-item"><img src="A12.jpg" onerror="this.src='A12.jpeg'" class="marquee-img" alt="Atendimento"></div>
 
             <div class="marquee-item"><img src="A1.jpg" onerror="this.src='A1.jpeg'" class="marquee-img" alt="Atendimento"></div>
             <div class="marquee-item"><img src="A2.jpg" onerror="this.src='A2.jpeg'" class="marquee-img" alt="Atendimento"></div>
@@ -589,6 +595,7 @@
             <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
             <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
             <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
+                                    <div class="marquee-item"><img src="A12.jpg" onerror="this.src='A12.jpeg'" class="marquee-img" alt="Atendimento"></div>
         </div>
     </div>
 </section>
@@ -597,7 +604,7 @@
 /* Container de cada item */
 .marquee-item {
     flex-shrink: 0;
-    width: 280px; /* Largura fixa */
+    width: clamp(14rem, 16vw, 17.5rem); /* Largura responsiva */
     aspect-ratio: 4 / 5; /* Força a proporção Retrato 4:5 */
     background-color: #18181b; /* Cor de fundo caso a imagem demore a carregar (zinc-900) */
     border-radius: 0.75rem; /* rounded-xl */
@@ -647,7 +654,7 @@
 /* Ajuste Responsivo para Celular */
 @media (max-width: 640px) {
     .marquee-item {
-        width: 200px;
+        width: clamp(11rem, 28vw, 12.5rem);
     }
 }
 </style>
@@ -670,7 +677,7 @@
                     Especialistas em manutenção e rebobinagem de motores elétricos desde 1998 em Ponta Grossa.
                 </p>
                 <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
-                <p class="text-zinc-600 text-[10px] font-mono">
+                <p class="text-zinc-600 md:text-sm font-mono">
                     CNPJ: 02.548.933/0001-43
                 </p>
             </div>
@@ -693,7 +700,7 @@
                     </iframe>
                 </div>
                 <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank"
-                   class="text-yellow-500 hover:text-yellow-400 text-[10px] font-bold uppercase tracking-widest transition">
+                   class="text-yellow-500 hover:text-yellow-400 md:text-sm font-bold uppercase tracking-widest transition">
                     Ver no Google Maps
                 </a>
             </div>
@@ -710,7 +717,7 @@
                     </svg>
                     Conversar Agora
                 </a>
-                <p class="text-zinc-600 text-[10px] uppercase tracking-widest mt-5">
+                <p class="text-zinc-600 md:text-sm uppercase tracking-widest mt-5">
                     Segunda a Sexta 
                     <br>08h às 11h e das 13 ás 17h
                 </p>
@@ -719,7 +726,7 @@
 
         <!-- Rodapé inferior -->
         <div class="border-t border-white/5 pt-8 text-center">
-            <div class="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-medium">
+            <div class="text-zinc-600 md:text-sm uppercase tracking-[0.2em] font-medium">
                 © 2026 Eletro Energia • Todos os direitos reservados
             </div>
         </div>
