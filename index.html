@@ -7,283 +7,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-        :root {
-            --bg: #09090b;
-            --line: rgba(255, 255, 255, 0.08);
-            --accent: #fbbf24;
-            --accent-2: #f59e0b;
-
-            --section-y: 3rem;
-            --section-y-tight: 2.4rem;
-            --nav-y: 0.65rem;
-            
-            /* Aumentado para mostrar melhor a fachada */
-            --hero-min-h: 85vh;
-
-            --title-hero: clamp(2.5rem, 5vw, 4.25rem);
-            --title-section: clamp(2rem, 3vw, 3rem);
-
-            --text-base: 1.2rem;
-            --text-small: 1rem;
-            --text-micro: 0.9rem;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: clamp(16px, 0.9vw + 0.5vh, 24px);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 28%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03), transparent 24%),
-                var(--bg);
-            color: #e4e4e7;
-        }
-
-        .nav-style {
-            backdrop-filter: blur(18px);
-            background: rgba(9, 9, 11, 0.76);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hero-bg {
-            position: relative;
-            background:
-                linear-gradient(180deg, rgba(9, 9, 11, 0.45) 0%, rgba(9, 9, 11, 0.88) 100%),
-                url('Fachada.jpeg');
-            background-size: cover;
-            background-position: center center;
-            min-height: var(--hero-min-h);
-            display: flex;
-            align-items: center;
-        }
-        
-        .hero-title {
-            font-size: var(--title-hero);
-            line-height: 0.97;
-            letter-spacing: -0.03em;
-        }
-       
-        .section-title {
-            font-size: var(--title-section);
-            line-height: 1.02;
-            letter-spacing: -0.05em;
-            text-align: center;
-        }
-
-        .yellow-gradient-text {
-            background: linear-gradient(to right, #fbbf24, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .glass-panel {
-            background: linear-gradient(180deg, rgba(24, 24, 27, .88), rgba(24, 24, 27, .64));
-            border: 1px solid var(--line);
-            box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
-            height: 100%;
-        }
-
-        .stats-card {
-            background: linear-gradient(180deg, rgba(24, 24, 27, .90), rgba(24, 24, 27, .66));
-            border: 1px solid rgba(255, 255, 255, .07);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-        }
-
-        .section-pad {
-            padding-top: var(--section-y);
-            padding-bottom: var(--section-y);
-        }
-
-        .section-pad-tight {
-            padding-top: var(--section-y-tight);
-            padding-bottom: var(--section-y-tight);
-        }
-
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, .22), transparent);
-        }
-
-        /* AJUSTE DE IMAGENS FÁCIL */
-        .media {
-            width: var(--w, 100%);
-            height: var(--h, auto);
-            aspect-ratio: var(--ratio, auto);
-            overflow: hidden;
-            border-radius: var(--radius, 14px);
-            background: transparent;
-        }
-
-        .media img {
-            width: 100%;
-            height: 100%;
-            /* 'contain' garante que a foto nunca seja cortada. Mude para 'cover' se quiser preencher o box. */
-            object-fit: var(--fit, contain);
-            display: block;
-            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        .media:hover img { transform: scale(1.05); }
-
-        .flat-media {
-            width: var(--w, 100%);
-            height: var(--h, auto);
-            aspect-ratio: var(--ratio, auto);
-            overflow: hidden;
-            border-radius: var(--radius, 14px);
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
-
-        .flat-media img {
-            width: auto;
-            height: 100%;
-            object-fit: var(--fit, contain);
-            display: block;
-            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-            border-radius: inherit;
-        }
-
-        .service-bubbles {
-            display: grid;
-            grid-template-columns: 1;
-            gap: 0rem;
-        }
-
-        .service-bubbles li {
-            list-style: none;
-            position: relative;
-            padding: .95rem 1rem .95rem 2.85rem;
-            border-radius: 999px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
-            border: 1px solid rgba(255, 255, 255, .08);
-            color: #d4d4d8;
-            font-size: var(--text-small);
-            line-height: 1.2;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
-            transition: transform .25s ease, border-color .25s ease, background .25s ease;
-        }
-
-        .service-bubbles li:hover {
-            transform: translateY(-2px);
-            border-color: rgba(251, 191, 36, .30);
-            background: linear-gradient(180deg, rgba(251, 191, 36, .08), rgba(255, 255, 255, .02));
-            
-        }
-
-        .service-bubbles li::before {
-            content: "\f058";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fbbf24;
-            font-size: .95rem;
-        }
-
-        .feature-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: .9rem;
-        }
-
-        .feature-card {
-            position: relative;
-            padding: 1rem 1rem 1rem 3rem;
-            border-radius: 18px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
-            border: 1px solid rgba(255, 255, 255, .08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
-            color: #d4d4d8;
-            font-size: var(--text-small);
-            line-height: 1.35;
-            transition: transform .25s ease, border-color .25s ease;
-        }
-
-        .feature-card::before {
-            content: "\f1ad";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 1rem;
-            top: 1rem;
-            color: #fbbf24;
-        }
-
-        .feature-card:nth-child(2)::before { content: "\f0b1"; }
-        .feature-card:nth-child(3)::before { content: "\f233"; }
-        .feature-card:nth-child(4)::before { content: "\f085"; }
-        .feature-card:nth-child(5)::before { content: "\f0ad"; }
-        .feature-card:nth-child(6)::before { content: "\f5ad"; }
-        .feature-card:nth-child(7)::before { content: "\f5fd"; }
-        .feature-card:nth-child(8)::before { content: "\f550"; }
-        .feature-card:nth-child(9)::before { content: "\f201"; }
-        .feature-card:nth-child(10)::before { content: "\f0c3"; }
-        .feature-card:nth-child(11)::before { content: "\f7b2"; }
-        .feature-card:nth-child(12)::before { content: "\f6e0"; }
-
-        .profile-card {
-            background: linear-gradient(180deg, rgba(24, 24, 27, .88), rgba(24, 24, 27, .62));
-            border: 1px solid rgba(255, 255, 255, .08);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, .26);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee-wrapper { overflow: hidden; width: 100%; position: relative; }
-        .marquee-content {
-            display: flex;
-            gap: 1.25rem;
-            width: max-content;
-            animation: scroll 35s linear infinite;
-        }
-
-
-        /* Seção Serviços: Aumentada */
-        .service-images {
-            display: grid;
-            grid-template-rows: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-            min-height: 0;
-        }
-
-
-
-        @media (max-width: 1023px) {
-            .service-images { height: auto; grid-template-rows: auto auto auto; }
-            .service-image-row .flat-media { aspect-ratio: 16 / 9; }
-        }
-        
-        <style>
-.bar {
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background: white;
-    transition: all 0.3s ease;
-}
-
-
-
-
-</style>
-
-    </style>
-    
-
+    <link rel="stylesheet" href="style.css">
+    <script src="btn.js"></script>
+   
 
 </head>
 
@@ -318,83 +44,7 @@
     <span class="line bottom block w-6 h-[2px] bg-white absolute transition-all duration-300 translate-y-2"></span>
 </button>
 
-<script>
 
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const nav = document.querySelector('nav'); // Seleciona sua navbar para medir a altura
-
-    const topLine = btn.querySelector('.top');
-    const middleLine = btn.querySelector('.middle');
-    const bottomLine = btn.querySelector('.bottom');
-
-    let aberto = false;
-    let acabouDeAbrir = false;
-
-    function abrirMenu() {
-        menu.style.maxHeight = menu.scrollHeight + "px";
-        topLine.style.transform = "translateY(0) rotate(45deg)";
-        middleLine.style.opacity = "0";
-        bottomLine.style.transform = "translateY(0) rotate(-45deg)";
-        aberto = true;
-        acabouDeAbrir = true;
-        setTimeout(() => { acabouDeAbrir = false; }, 500);
-    }
-
-    function fecharMenu() {
-        menu.style.maxHeight = "0px";
-        topLine.style.transform = "translateY(-8px) rotate(0)";
-        middleLine.style.opacity = "1";
-        bottomLine.style.transform = "translateY(8px) rotate(0)";
-        aberto = false;
-    }
-
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        aberto ? fecharMenu() : abrirMenu();
-    });
-
-    window.addEventListener('scroll', () => {
-        if (aberto && !acabouDeAbrir) fecharMenu();
-    });
-
-    // --- SCRIPT DE OFFSET DINÂMICO ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            // Ignora se o link for apenas "#"
-            if (targetId === "#") return;
-
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                e.preventDefault(); 
-
-                // 1. Se estiver no mobile, fecha o menu primeiro
-                if (aberto) fecharMenu();
-
-                // 2. MEDIÇÃO DINÂMICA: Pega a altura real da nav naquele momento
-                // Isso resolve a diferença entre mobile e desktop automaticamente
-                const navHeight = nav.offsetHeight; 
-                
-                // 3. Calcula a posição
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
-                // 4. Scroll suave manual
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-
-                // 5. Atualiza a URL (opcional, para manter o histórico do navegador)
-                history.pushState(null, null, targetId);
-            }
-        });
-    });
-});
-</script>
     </div>
 
     <!-- Menu mobile -->
@@ -421,21 +71,41 @@ document.addEventListener('DOMContentLoaded', function () {
     </header>
 
     <!-- Stats -->
-    <section class="relative -mt-10 z-10">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Fundação</p><p class="text-2xl sm:text-3xl md:text-4xl font-black">1998</p></div>
-                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Área Própria</p><p class="text-2xl sm:text-3xl md:text-4xl font-black">2300m²</p></div>
-                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Até</p><p class="text-2xl sm:text-3xl md:text-4xl font-black">2000CV</p></div>
-                <div class="stats-card p-7 rounded-2xl text-center"><p class="text-yellow-500 micro-label">Foco</p><p class="text-2xl sm:text-3xl md:text-4xl font-black">Industrial</p></div>
+<section class="relative -mt-10 z-10">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+                    <!-- Card 4 -->
+            <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                <p class="text-yellow-500 micro-label">Atendimento</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-black leading-tight">Industrial</p>
             </div>
+            
+                        <!-- Card 3 -->
+            <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                <p class="text-yellow-500 micro-label">Área própria</p>
+                <p id="contador-area" class="text-2xl sm:text-3xl md:text-4xl font-black">2300m²</p>
+            </div>
+            
+                        <!-- Card 2 -->
+            <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                <p class="text-yellow-500 micro-label">Fundação</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-black">1998</p>
+            </div>
+            
+            <!-- Card 1 -->
+            <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                <p class="text-yellow-500 micro-label">Anos no mercado</p>
+                <p id="contador-anos" class="text-2xl sm:text-3xl md:text-4xl font-black">28+</p>
+            </div>
+	<script src="contador.js"></script>
+
         </div>
-    </section>
+    </div>
+</section>
 
 
 <br><br>
-
-
 
 
 
@@ -443,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <section id="sobre" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
     <div class="container mx-auto px-6 max-w-6xl">
         <h2 class="section-title font-black uppercase mb-4">Sobre <span class="text-yellow-500">Nós</span></h2>
-        <p class="text-center text-zinc-500 uppercase tracking-[0.3em] md:text-sm mb-10 font-bold">Experiência e Qualificação Técnica</p>
+
         <div class="section-divider mb-12"></div>
 
         <!-- Texto Institucional -->
@@ -667,6 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <section id="equipamentos" class="section-pad scroll-mt-12">
         <div class="container mx-auto px-6">
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
+                        <div class="section-divider mb-12"></div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="text-center md:text-sm mt-2">Estufas</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="text-center md:text-sm mt-2">Cabine de pintura</p></div>
@@ -689,6 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="container mx-auto px-6">
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
+                <div class="section-divider mb-12"></div>
     
     <div class="marquee-wrapper relative overflow-hidden">
         <div id="marquee-dynamic" class="marquee-content flex gap-4 animate-scroll">
@@ -696,155 +368,18 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </div>
 </section>
-
-<style>
-/* Container de cada item */
-.marquee-item {
-    flex-shrink: 0;
-    width: clamp(14rem, 16vw, 17.5rem); 
-    aspect-ratio: 4 / 5; 
-    background-color: #18181b; 
-    border-radius: 0.75rem; 
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Evita que o usuário "arraste" a imagem para fora (comportamento nativo de img) */
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-/* A imagem em si */
-.marquee-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    object-position: center; 
-    display: block;
-    pointer-events: none; /* Evita que o toque na imagem bloqueie o scroll */
-}
-
-/* Estrutura do Marquee */
-.marquee-wrapper {
-    width: 100%;
-    overflow-x: hidden;
-    /* Máscara de gradiente nas bordas */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    
-    /* Melhora o scroll no mobile */
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x; 
-}
-
-.marquee-content {
-    display: flex;
-    width: max-content;
-    animation: scroll 60s linear infinite;
-    will-change: transform;
-}
-
-/* Animação do Scroll */
-@keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-50% - 0.5rem)); } /* 0.5rem é metade do gap (gap-4 = 1rem) */
-}
-
-/* Pausa ao passar o mouse - APENAS EM DESKTOP */
-@media (hover: hover) {
-    .marquee-wrapper:hover .marquee-content {
-        animation-play-state: paused;
-    }
-}
-
-/* Aumentamos para 480px para cobrir quase todos os celulares modernos */
-@media (max-width: 480px) {
-    .marquee-item {
-        width: 10rem !important; 
-        flex: 0 0 10rem !important;
-        overflow: hidden; /* Garante que nada saia para fora */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .marquee-item img {
-        width: 100% !important;
-        height: auto !important; /* Mantém a proporção original */
-        object-fit: contain !important; /* Faz a imagem caber inteira no espaço */
-    }
-}
-
-</style>
-
-<script>
-async function loadGallery() {
-    const container = document.getElementById('marquee-dynamic');
-    let index = 1;
-    let errorsInARow = 0;
-    const maxErrors = 2; 
-    const foundImages = [];
-
-    // Tenta carregar as imagens sequencialmente
-    while (errorsInARow < maxErrors) {
-        const imgName = `A${index}`;
-        const extensions = ['.jpg', '.jpeg'];
-        let loaded = false;
-
-        for (const ext of extensions) {
-            const success = await new Promise((resolve) => {
-                const img = new Image();
-                img.src = `${imgName}${ext}`;
-                img.onload = () => {
-                    foundImages.push(`${imgName}${ext}`);
-                    resolve(true);
-                };
-                img.onerror = () => resolve(false);
-            });
-
-            if (success) {
-                loaded = true;
-                break;
-            }
-        }
-
-        if (loaded) {
-            errorsInARow = 0;
-        } else {
-            errorsInARow++;
-        }
-        index++;
-    }
-
-    if (foundImages.length > 0) {
-        // Renderiza a primeira vez
-        renderItems(foundImages, container);
-        // Duplica para o efeito infinito
-        renderItems(foundImages, container);
-        
-        // Ajusta a velocidade baseada na quantidade de fotos (ex: 3s por foto)
-        const duration = Math.max(foundImages.length * 3.5, 15); 
-        container.style.animationDuration = `${duration}s`;
-    }
-}
-
-function renderItems(images, container) {
-    images.forEach(src => {
-        const div = document.createElement('div');
-        div.className = 'marquee-item';
-        div.innerHTML = `<img src="${src}" class="marquee-img" alt="Atendimento" loading="lazy">`;
-        container.appendChild(div);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', loadGallery);
-</script>
+ 
+<link rel="stylesheet" href="galeria.css">
+<script src="galeria.js"></script>
 
 
 <footer id="contato" class="bg-zinc-950 py-4 border-t border-white/5 scroll-mt-20">
     <div class="container mx-auto px-6">
 <br>
-        <center><h2 class="text-2xl md:text-3xl font-black uppercase text-white mb-12">
+        <center><h2 class="text-2xl md:text-3xl font-black uppercase text-white mb-6">
             Contato
         </h2></center>
+                    <div class="section-divider mb-6"></div>
 
         <div class="grid gap-6 md:grid-cols-2">
 
@@ -854,15 +389,15 @@ document.addEventListener('DOMContentLoaded', loadGallery);
                     Localização
                 </h3>
 
-<p class="text-zinc-300 text-sm flex flex-col sm:flex-row sm:justify-between w-full px-[10px]">
-    <span>Rua José do Patrocínio, 222</span>
+		<p class="text-zinc-300 text-sm flex flex-col sm:flex-row sm:justify-between w-full px-[10px]">
+		    <span>Rua José do Patrocínio, 222</span>
 
-    <span class="hidden sm:inline">•</span>
-    <span>CEP 84040-200</span>
+		    <span class="hidden sm:inline">•</span>
+		    <span>CEP 84040-200</span>
 
-    <span class="hidden sm:inline">•</span>
-    <span>Ponta Grossa - PR</span>
-</p>
+		    <span class="hidden sm:inline">•</span>
+		    <span>Ponta Grossa - PR</span>
+		</p>
 
                 <div class="w-full h-36 rounded-xl overflow-hidden border border-white/5">
                     <iframe
@@ -915,10 +450,7 @@ document.addEventListener('DOMContentLoaded', loadGallery);
                        class="block hover:text-white break-all">
                         MauroEletroEnergia@gmail.com
                     </a>
-
-
                 </div>
-
             </div>
         </div>
 
@@ -932,13 +464,6 @@ document.addEventListener('DOMContentLoaded', loadGallery);
         </div>
     </div>
 </footer>
-
-
-</script>
-
-
 </body>
-<script>
-</script>
 </html>
 
