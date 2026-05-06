@@ -257,7 +257,6 @@
             .service-image-row .flat-media { aspect-ratio: 16 / 9; }
         }
         
-        <style>
 .bar {
     position: absolute;
     width: 24px;
@@ -266,6 +265,13 @@
     transition: all 0.3s ease;
 }
 
+.numero-grande {
+  color: #fbbf24;    /* Cor de destaque */
+  display: inline-block;
+    font-weight: bold;
+
+
+}
 
 
 
