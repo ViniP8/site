@@ -11,7 +11,7 @@
             --nav-y: 0.65rem;
             
             /* Aumentado para mostrar melhor a fachada */
-            --hero-min-h: 85vh;
+            --hero-min-h: 90vh;
 
             --title-hero: clamp(2.5rem, 5vw, 4.25rem);
             --title-section: clamp(2rem, 3vw, 3rem);
