@@ -266,6 +266,34 @@
             .service-images { height: auto; grid-template-rows: auto auto auto; }
             .service-image-row .flat-media { aspect-ratio: 16 / 9; }
         }
+        
+        <style>
+.bar {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.top { transform: translateY(-6px); }
+.middle { }
+.bottom { transform: translateY(6px); }
+
+/* Estado aberto (vira X) */
+.open .top {
+    transform: rotate(45deg);
+}
+
+.open .middle {
+    opacity: 0;
+}
+
+.open .bottom {
+    transform: rotate(-45deg);
+}
+</style>
+
     </style>
     
 
@@ -295,24 +323,28 @@
         </div>
 
         <!-- Botão mobile -->
-        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
-            <span class="w-6 h-0.5 bg-white"></span>
-            <span class="w-6 h-0.5 bg-white"></span>
-            <span class="w-6 h-0.5 bg-white"></span>
-        </button>
+<button id="menu-btn" class="md:hidden w-10 h-10 flex flex-col justify-center items-center relative z-50">
+    
+    <span class="line top block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
+    
+    <span class="line middle block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
+    
+    <span class="line bottom block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
+
+</button>
     </div>
 
     <!-- Menu mobile -->
-    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-white/5">
-        <div class="flex flex-col text-center py-6 space-y-5 font-bold uppercase tracking-[0.2em]">
-            <a href="#sobre" class="text-zinc-400 hover:text-yellow-500">Sobre</a>
-            <a href="#atendimentos" class="text-zinc-400 hover:text-yellow-500">Serviços</a>
-            <a href="#estrutura" class="text-zinc-400 hover:text-yellow-500">Estrutura</a>
-            <a href="#equipamentos" class="text-zinc-400 hover:text-yellow-500">Equipamentos</a>
-            <a href="#galeria" class="text-zinc-400 hover:text-yellow-500">Atendimentos</a>
-            <a href="#contato" class="text-yellow-500">Contato</a>
-        </div>
+<div id="mobile-menu" class="md:hidden bg-zinc-900 border-t border-white/5 overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+    <div class="flex flex-col text-center py-6 space-y-5 font-bold uppercase tracking-[0.2em]">
+        <a href="#sobre" class="text-zinc-400 hover:text-yellow-500">Sobre</a>
+        <a href="#atendimentos" class="text-zinc-400 hover:text-yellow-500">Serviços</a>
+        <a href="#estrutura" class="text-zinc-400 hover:text-yellow-500">Estrutura</a>
+        <a href="#equipamentos" class="text-zinc-400 hover:text-yellow-500">Equipamentos</a>
+        <a href="#galeria" class="text-zinc-400 hover:text-yellow-500">Atendimentos</a>
+        <a href="#contato" class="text-yellow-500">Contato</a>
     </div>
+</div>
 </nav>
 
     <header class="hero-bg">
@@ -786,20 +818,55 @@ document.addEventListener('DOMContentLoaded', function () {
     const btn = document.getElementById('menu-btn');
     const menu = document.getElementById('mobile-menu');
 
-    if (btn && menu) {
-        // abrir/fechar botão
-        btn.addEventListener('click', function () {
-            menu.classList.toggle('hidden');
-        });
+    const topLine = btn.querySelector('.top');
+    const middleLine = btn.querySelector('.middle');
+    const bottomLine = btn.querySelector('.bottom');
 
-        // fechar ao clicar em qualquer link
-        const links = menu.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
+    let aberto = false;
+    let acabouDeAbrir = false; // 🔥 controle
+
+    function abrirMenu() {
+        menu.style.maxHeight = menu.scrollHeight + "px";
+
+        topLine.style.transform = "rotate(45deg)";
+        middleLine.style.opacity = "0";
+        bottomLine.style.transform = "rotate(-45deg)";
+
+        aberto = true;
+
+        // bloqueia fechamento imediato por scroll
+        acabouDeAbrir = true;
+        setTimeout(() => {
+            acabouDeAbrir = false;
+        }, 1000);
     }
+
+    function fecharMenu() {
+        menu.style.maxHeight = "0px";
+
+        topLine.style.transform = "translateY(-6px)";
+        middleLine.style.opacity = "1";
+        bottomLine.style.transform = "translateY(6px)";
+
+        aberto = false;
+    }
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        aberto ? fecharMenu() : abrirMenu();
+    });
+
+    // fechar ao clicar nos links
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', fecharMenu);
+    });
+
+    // 🔥 fechar ao rolar (com proteção)
+    window.addEventListener('scroll', () => {
+        if (aberto && !acabouDeAbrir) {
+            fecharMenu();
+        }
+    });
 });
 </script>
 </body>
