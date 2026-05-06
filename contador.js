@@ -36,4 +36,4 @@ function executarAnimacao(elemento, valorFinal, duracao, sufixo) {
 // A chamada continua a mesma:
 iniciarContador('contador-anos', 28, 1000, '+');
 iniciarContador('contador-area', 2300, 1500, 'm²');
-iniciarContador('contador-experiencia', 50, 2000, ' anos');
+iniciarContador('contador-experiencia', 50, 1500, ' anos');
