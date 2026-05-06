@@ -279,7 +279,12 @@
 
 
 
-</style>    
+</style>
+
+    </style>
+    
+
+
 </head>
 
 <body class="text-zinc-100">
@@ -608,23 +613,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         <!-- Ocupando largura total para o texto não vazar -->
                         
-<ul class="service-bubbles gap-3">
-<li>Sistemas e painéis de teste de motores</li>
-<li>Exaustores com controle eletrônico</li>
-<li>Fios e papéis isolantes de classe H</li>
-<li>Megômetros digitais e analógicos</li>
-<li>Cabine de pintura pulverizadora</li>
-<li>Estufas com controle eletrônico</li>
-<li>Testes com soft-start e inversor</li>
-<li>Ponte rolante para 5 toneladas</li>
-<li>Testes em corrente contínua</li>
-<li>Tanque de envernizamento</li>
-<li>Sistemas de alta potência</li>
-<li>Conjunto motor/gerador</li>
-<li>Balanceador eletrônico</li>
-<li>Bobinadeira eletrônica</li>
-<li>Fios de cobre ASTA</li>
-</ul>
+                        <ul class="service-bubbles gap-3">
+                        <li>Sistemas e painéis de teste de motores</li>
+                        <li>Exaustores com controle eletrônico</li>
+                        <li>Fios e papéis isolantes de classe H</li>
+                        <li>Megômetros digitais e analógicos</li>
+                        <li>Cabine de pintura pulverizadora</li>
+                        <li>Estufas com controle eletrônico</li>
+                        <li>Testes com soft-start e inversor</li>
+                        <li>Ponte rolante para 5 toneladas</li>
+                        <li>Testes em corrente contínua</li>
+                        <li>Tanque de envernizamento</li>
+                        <li>Sistemas de alta potência</li>
+                        <li>Conjunto motor/gerador</li>
+                        <li>Balanceador eletrônico</li>
+                        <li>Bobinadeira eletrônica</li>
+                        <li>Fios de cobre ASTA</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -680,200 +685,150 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 md:scroll-mt-12 overflow-hidden">
+<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 md:scroll-mt-12">
     <div class="container mx-auto px-6">
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
     
-    <div class="marquee-wrapper relative">
-        <div id="marquee-dynamic" class="marquee-content flex gap-4">
-            <!-- Imagens via JS -->
+    <div class="marquee-wrapper relative overflow-hidden">
+        <div id="marquee-dynamic" class="marquee-content flex gap-4 animate-scroll">
+            <!-- As imagens entrarão aqui via JS -->
         </div>
     </div>
-
 </section>
 
-<script>
-
-window.checkImage = function (src) {
-    return new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(src);
-        img.onerror = () => resolve(false);
-        img.src = src;
-    });
-};
-
-window.marqueeData = {
-    posX: 0,
-    speed: 0.8,
-    container: null,
-    clickVelocity: 0
-};
-
-window.manualPush = function(direction) {
-    const pushAmount = window.innerWidth < 640 ? 250 : 450;
-
-    if (direction === 'right') {
-        window.marqueeData.clickVelocity -= pushAmount;
-    } else {
-        window.marqueeData.clickVelocity += pushAmount;
-    }
-};
-
-function update() {
-    const data = window.marqueeData;
-
-    if (data.container) {
-        const width = data.container.scrollWidth / 3;
-
-        data.posX -= data.speed;
-
-        // aplica clique
-        if (data.clickVelocity) {
-            data.posX += data.clickVelocity;
-            data.clickVelocity *= 0.85; // amortecimento
-            if (Math.abs(data.clickVelocity) < 0.1) {
-                data.clickVelocity = 0;
-            }
-        }
-
-        // loop correto (sem reset seco)
-        if (data.posX <= -width) {
-            data.posX += width;
-        }
-
-        if (data.posX > 0) {
-            data.posX -= width;
-        }
-
-        data.container.style.transform =
-            `translate3d(${data.posX}px, 0, 0)`;
-    }
-
-    requestAnimationFrame(update);
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const container = document.getElementById('marquee-dynamic');
-    window.marqueeData.container = container;
-
-    if (!container) return;
-
-    let index = 1;
-    let foundImages = [];
-
-    while (index <= 20) {
-        const name = `A${index}`;
-        const src = await checkImage(`${name}.jpg`) || await checkImage(`${name}.jpeg`);
-        if (src) {
-            foundImages.push(src);
-            index++;
-        } else break;
-    }
-
-    if (foundImages.length > 0) {
-        const itemsHTML = foundImages.map(img => `
-            <div class="marquee-item">
-                <img src="${img}" class="marquee-img" alt="Atendimento">
-            </div>
-        `).join('');
-
-        container.innerHTML = itemsHTML + itemsHTML + itemsHTML;
-        window.marqueeData.baseWidth = container.scrollWidth / 3;
-
-        requestAnimationFrame(update);
-    }
-});
-</script>
-
 <style>
+/* Container de cada item */
 .marquee-item {
     flex-shrink: 0;
-    width: 280px;
-    aspect-ratio: 4 / 5;
-    background-color: #18181b;
-    border-radius: 0.75rem;
+    width: clamp(14rem, 16vw, 17.5rem); 
+    aspect-ratio: 4 / 5; 
+    background-color: #18181b; 
+    border-radius: 0.75rem; 
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Evita que o usuário "arraste" a imagem para fora (comportamento nativo de img) */
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.marquee-img { width: 100%; height: 100%; object-fit: cover; }
-
-.marquee-wrapper:hover .marquee-content {
-    animation-play-state: paused;
+/* A imagem em si */
+.marquee-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+    display: block;
+    pointer-events: none; /* Evita que o toque na imagem bloqueie o scroll */
 }
 
+/* Estrutura do Marquee */
 .marquee-wrapper {
     width: 100%;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    overflow-x: hidden;
+    /* Máscara de gradiente nas bordas */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    
+    /* Melhora o scroll no mobile */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x; 
 }
 
 .marquee-content {
     display: flex;
     width: max-content;
-    position: relative; /* Essencial para o 'left' funcionar */
-    left: 0;            /* Valor inicial */
-    will-change: transform, left;
-    /* Certifique-se de que NÃO exista 'animation:' aqui dentro */
+    animation: scroll 30s linear infinite;
+    will-change: transform;
 }
 
-
-
-.btn-scroll {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none; /* Impede selecionar texto ao segurar o botão */
+/* Animação do Scroll */
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 0.5rem)); } /* 0.5rem é metade do gap (gap-4 = 1rem) */
 }
 
+/* Pausa ao passar o mouse - APENAS EM DESKTOP */
+@media (hover: hover) {
+    .marquee-wrapper:hover .marquee-content {
+        animation-play-state: paused;
+    }
+}
+
+/* Ajuste Responsivo para Celular */
 @media (max-width: 640px) {
-    .marquee-item { width: 160px; }
-    .marquee-content { gap: 0.75rem; }
-}
-
-/* Container das setas */
-.marquee-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.btn-scroll {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.btn-scroll:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-}
-
-.btn-scroll:active {
-    transform: scale(0.95);
+    .marquee-item {
+        width: clamp(11rem, 28vw, 12.5rem);
+    }
+    .marquee-content {
+        gap: 0.75rem; /* Menor espaçamento no mobile */
+    }
 }
 </style>
+
+<script>
+async function loadGallery() {
+    const container = document.getElementById('marquee-dynamic');
+    let index = 1;
+    let errorsInARow = 0;
+    const maxErrors = 2; 
+    const foundImages = [];
+
+    // Tenta carregar as imagens sequencialmente
+    while (errorsInARow < maxErrors) {
+        const imgName = `A${index}`;
+        const extensions = ['.jpg', '.jpeg'];
+        let loaded = false;
+
+        for (const ext of extensions) {
+            const success = await new Promise((resolve) => {
+                const img = new Image();
+                img.src = `${imgName}${ext}`;
+                img.onload = () => {
+                    foundImages.push(`${imgName}${ext}`);
+                    resolve(true);
+                };
+                img.onerror = () => resolve(false);
+            });
+
+            if (success) {
+                loaded = true;
+                break;
+            }
+        }
+
+        if (loaded) {
+            errorsInARow = 0;
+        } else {
+            errorsInARow++;
+        }
+        index++;
+    }
+
+    if (foundImages.length > 0) {
+        // Renderiza a primeira vez
+        renderItems(foundImages, container);
+        // Duplica para o efeito infinito
+        renderItems(foundImages, container);
+        
+        // Ajusta a velocidade baseada na quantidade de fotos (ex: 3s por foto)
+        const duration = Math.max(foundImages.length * 3, 15); 
+        container.style.animationDuration = `${duration}s`;
+    }
+}
+
+function renderItems(images, container) {
+    images.forEach(src => {
+        const div = document.createElement('div');
+        div.className = 'marquee-item';
+        div.innerHTML = `<img src="${src}" class="marquee-img" alt="Atendimento" loading="lazy">`;
+        container.appendChild(div);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadGallery);
+</script>
+
 
 <footer id="contato" class="bg-zinc-950 py-4 border-t border-white/5 scroll-mt-20">
     <div class="container mx-auto px-6">
@@ -974,5 +929,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 </body>
+<script>
+</script>
 </html>
 
