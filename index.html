@@ -66,8 +66,8 @@
 
         .hero-title {
             font-size: var(--title-hero);
-            line-height: 0.98;
-            letter-spacing: -0.05em;
+            line-height: 0.97;
+            letter-spacing: -0.03em;
         }
 
         .section-title {
@@ -78,7 +78,7 @@
         }
 
         .yellow-gradient-text {
-            background: linear-gradient(to right, #fbbf24, #f59e0b);
+            background: linear-gradient(to right, #fbbf24, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -272,7 +272,7 @@
 <body class="text-zinc-100">
 
     <nav class="nav-style text-white sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-[var(--nav-y)] flex justify-between items-center">
+        <div class="container mx-auto px-6 py-[var(--nav-y)] flex justify-between items-center" >
             <div class="flex items-center">
                 <span class="text-2xl font-black tracking-tighter uppercase">
                     Eletro <span class="text-yellow-500">Energia</span>
@@ -291,7 +291,7 @@
     </nav>
 
     <header class="hero-bg">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6 " style="margin-left: 8%;">
             <div class="max-w-2xl">
                 <span class="text-yellow-500 font-bold tracking-[0.3em] uppercase md:text-base mb-4 block">Ponta Grossa - PR</span>
                 <h1 class="hero-title font-black text-white mb-5 uppercase">Eletro Energia <br><span class="yellow-gradient-text">Motores Elétricos</span></h1>
@@ -341,7 +341,7 @@
             <div class="profile-card rounded-[2rem] p-8 md:p-10 border border-white/5 relative overflow-hidden group">
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
                 
-                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                     <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 14rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
                         <img src="Mauro.jpeg" alt="Mauro Francisco Penckowski">
                     </div>
@@ -365,12 +365,13 @@
                     </div>
                 </div>
             </div>
+            
 
             <!-- Vinicius -->
             <div class="profile-card rounded-[2rem] p-8 md:p-10 border border-white/5 relative overflow-hidden group">
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
 
-                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                     <div class="media flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 11.25rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
                         <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Vinícius Penckowski">
                     </div>
@@ -429,7 +430,7 @@
                             <li>Sopradores</li>
                             <li>Geradores</li>
                             <li>Motores com múltiplas velocidades</li>
-                            <li>Motores de Corrente Contínua</li>
+                            <li>Motores de corrente contínua</li>
                             <li>Repotencialização de motores</li>
                             <li>Modificação de frequência</li>
                             <li>Modificação de tensão</li>
@@ -548,13 +549,13 @@
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="md:text-sm mt-2">Estufas</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="md:text-sm mt-2">Cabine de Pintura</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="md:text-sm mt-2">Cabine de pintura</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="md:text-sm mt-2">Bobinadeira automática</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="md:text-sm mt-2">Balanceador</p></div>
             </div>
             <br>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="md:text-sm mt-2">Paineis</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="md:text-sm mt-2">Painéis</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="md:text-sm mt-2">Suportes</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="md:text-sm mt-2">Testes CC/CA</p></div>
                 <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="md:text-sm mt-2">Tanque de envernizamento</p></div>
@@ -672,7 +673,7 @@
 
             <!-- Coluna 1: Info Empresa -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
+                <h4 class="text-white font-black uppercase  text-base mb-5">
                     Eletro Energia
                 </h4>
                 <p class="text-zinc-400 text-sm leading-relaxed mb-5 max-w-xs">
@@ -681,27 +682,28 @@
                 <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
                 <p class="text-zinc-600 md:text-base font-mono">
                     CNPJ: 02.548.933/0001-43
+                    <br>
                 </p>
+                <br>
+                Email: <a href="mailto:MauroEletroEnergia@gmail.com">MauroEletroEnergia@gmail.com</a>
             </div>
 
             <!-- Coluna 2: Localização -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
+                <h4 class="text-white font-black uppercase  text-base mb-5">
                     Localização
                 </h4>
                 <p class="text-zinc-300 text-sm leading-relaxed mb-4">
                     Rua José do Patrocínio, 222<br>
-                    Vila Estrela — Ponta Grossa - PR
+                    Ponta Grossa - PR
                 </p>
                 <!-- MAPA MAIS COMPACTO -->
                 <div class="w-full h-32 rounded-lg overflow-hidden mb-3 border border-white/5">
-                    <iframe 
-                        src="https://www.google.com/maps?q=Rua+José+do+Patrocínio,+222,+Ponta+Grossa+PR&output=embed"
-                        class="w-full h-full opacity-80 hover:grayscale-0 transition-all duration-500" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.41008143215!2d-50.16099670923952!3d-25.107948285894203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e81a5e6e110fbf%3A0xa21c5626d2f2a3bc!2sEletro%20Energia%20-%20Motores%20El%C3%A9tricos%20Ltda!5e0!3m2!1spt-BR!2sus!4v1778025993586!5m2!1spt-BR!2sus"                     class="w-full h-full opacity-80 hover:grayscale-0 transition-all duration-500" 
                         loading="lazy">
                     </iframe>
                 </div>
-                <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank"
+                <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.41008143215!2d-50.16099670923952!3d-25.107948285894203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e81a5e6e110fbf%3A0xa21c5626d2f2a3bc!2sEletro%20Energia%20-%20Motores%20El%C3%A9tricos%20Ltda!5e0!3m2!1spt-BR!2sus!4v1778025993586!5m2!1spt-BR!2sus" target="_blank"
                    class="text-yellow-500 hover:text-yellow-400 md:text-sm font-bold uppercase tracking-widest transition">
                     Ver no Google Maps
                 </a>
@@ -709,20 +711,25 @@
 
             <!-- Coluna 3: WhatsApp (Agora alinhada no topo) -->
             <div>
-                <h4 class="text-white font-black uppercase tracking-[0.25em] text-base mb-5">
+                <h4 class="text-white font-black uppercase text-base mb-5">
                     WhatsApp
                 </h4>
                 <a href="https://wa.me/5542999723775"
-                   class="group inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 transition-all duration-300 text-white px-6 py-3 rounded-md font-bold uppercase text-[11px] shadow-lg">
+                   class="group inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 transition-all duration-300 text-white px-6 py-3 rounded-md font-bold uppercase text-[20px] shadow-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current">
                         <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.756 5.707 2.188 8.188L0 32l7.613-2.156a15.94 15.94 0 0 0 8.387 2.336h.006c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.23c-2.523 0-4.996-.676-7.156-1.957l-.512-.305-4.52 1.281 1.207-4.402-.332-.539a13.42 13.42 0 0 1-2.055-7.207c0-7.41 6.027-13.438 13.438-13.438s13.438 6.027 13.438 13.438-6.027 13.438-13.438 13.438zm7.383-10.094c-.402-.201-2.379-1.176-2.746-1.309-.367-.134-.635-.201-.904.201-.268.402-1.039 1.309-1.273 1.578-.234.268-.469.301-.871.1-.402-.201-1.699-.626-3.236-1.996-1.195-1.066-2.004-2.379-2.238-2.781-.234-.402-.025-.619.176-.82.18-.179.402-.469.603-.703.201-.234.268-.402.402-.67.134-.268.067-.502-.034-.703-.1-.201-.904-2.18-1.238-2.984-.326-.783-.657-.676-.904-.689l-.77-.013c-.268 0-.703.1-1.07.502s-1.402 1.371-1.402 3.342 1.438 3.873 1.637 4.141c.201.268 2.83 4.32 6.857 6.055.958.414 1.705.661 2.287.846.961.306 1.836.263 2.528.159.771-.115 2.379-.972 2.715-1.91.335-.938.335-1.742.234-1.91-.1-.168-.367-.268-.77-.469z"/>
                     </svg>
-                    Conversar Agora
+                    Conversar
                 </a>
+                <br><br>
+                <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
                 <p class="text-zinc-600 md:text-sm uppercase tracking-widest mt-5">
                     Segunda a Sexta 
-                    <br>08h às 11h e das 13 ás 17h
+                    <br>08h às 11h e das 13h às 17h
+                    <br><br>
+                   
                 </p>
+                Fone: <a href="tel:42999723775">(42) 99972-3775</a>
             </div>
         </div>
 
