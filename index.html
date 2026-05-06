@@ -614,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <!-- Ocupando largura total para o texto não vazar -->
                         
                         <ul class="service-bubbles gap-3">
-                        <li>Sistemas e painéis de teste de motores</li>
+                        <li>Painéis para testes e análises de motores</li>
                         <li>Exaustores com controle eletrônico</li>
                         <li>Fios e papéis isolantes de classe H</li>
                         <li>Megômetros digitais e analógicos</li>
@@ -668,17 +668,17 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="container mx-auto px-6">
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="md:text-sm mt-2">Estufas</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="md:text-sm mt-2">Cabine de pintura</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="md:text-sm mt-2">Bobinadeira automática</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="md:text-sm mt-2">Balanceador</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="text-center md:text-sm mt-2">Estufas</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="text-center md:text-sm mt-2">Cabine de pintura</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="text-center md:text-sm mt-2">Bobinadeira automática</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="text-center md:text-sm mt-2">Balanceador</p></div>
             </div>
             <br>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="md:text-sm mt-2">Painéis</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="md:text-sm mt-2">Suportes</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="md:text-sm mt-2">Testes CC/CA</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="md:text-sm mt-2">Tanque de envernizamento</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="text-center md:text-sm mt-2">Painéis</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="text-center md:text-sm mt-2">Suportes</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="text-center md:text-sm mt-2">Testes CC/CA</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="text-center md:text-sm mt-2">Tanque de envernizamento</p></div>
             </div>
         </div>
     </section>
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function () {
 .marquee-content {
     display: flex;
     width: max-content;
-    animation: scroll 30s linear infinite;
+    animation: scroll 60s linear infinite;
     will-change: transform;
 }
 
@@ -755,15 +755,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 
-/* Ajuste Responsivo para Celular */
-@media (max-width: 640px) {
+/* Aumentamos para 480px para cobrir quase todos os celulares modernos */
+@media (max-width: 480px) {
     .marquee-item {
-        width: clamp(11rem, 28vw, 12.5rem);
+        width: 10rem !important; 
+        flex: 0 0 10rem !important;
+        overflow: hidden; /* Garante que nada saia para fora */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .marquee-content {
-        gap: 0.75rem; /* Menor espaçamento no mobile */
+
+    .marquee-item img {
+        width: 100% !important;
+        height: auto !important; /* Mantém a proporção original */
+        object-fit: contain !important; /* Faz a imagem caber inteira no espaço */
     }
 }
+
 </style>
 
 <script>
@@ -812,7 +821,7 @@ async function loadGallery() {
         renderItems(foundImages, container);
         
         // Ajusta a velocidade baseada na quantidade de fotos (ex: 3s por foto)
-        const duration = Math.max(foundImages.length * 3, 15); 
+        const duration = Math.max(foundImages.length * 3.5, 15); 
         container.style.animationDuration = `${duration}s`;
     }
 }
