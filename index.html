@@ -69,7 +69,7 @@
             line-height: 0.97;
             letter-spacing: -0.03em;
         }
-
+       
         .section-title {
             font-size: var(--title-section);
             line-height: 1.02;
@@ -276,22 +276,9 @@
     transition: all 0.3s ease;
 }
 
-.top { transform: translateY(-6px); }
-.middle { }
-.bottom { transform: translateY(6px); }
 
-/* Estado aberto (vira X) */
-.open .top {
-    transform: rotate(45deg);
-}
 
-.open .middle {
-    opacity: 0;
-}
 
-.open .bottom {
-    transform: rotate(-45deg);
-}
 </style>
 
     </style>
@@ -323,15 +310,91 @@
         </div>
 
         <!-- Botão mobile -->
+<!-- Botão corrigido -->
 <button id="menu-btn" class="md:hidden w-10 h-10 flex flex-col justify-center items-center relative z-50">
-    
-    <span class="line top block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
-    
-    <span class="line middle block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
-    
-    <span class="line bottom block w-6 h-[2px] bg-white absolute transition-all duration-300"></span>
-
+    <!-- Note o -translate-y-2 para a linha do topo e translate-y-2 para a de baixo -->
+    <span class="line top block w-6 h-[2px] bg-white absolute transition-all duration-300 -translate-y-2"></span>
+    <span class="line middle block w-6 h-[2px] bg-white absolute transition-all duration-300"></span> 
+    <span class="line bottom block w-6 h-[2px] bg-white absolute transition-all duration-300 translate-y-2"></span>
 </button>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const nav = document.querySelector('nav'); // Seleciona sua navbar para medir a altura
+
+    const topLine = btn.querySelector('.top');
+    const middleLine = btn.querySelector('.middle');
+    const bottomLine = btn.querySelector('.bottom');
+
+    let aberto = false;
+    let acabouDeAbrir = false;
+
+    function abrirMenu() {
+        menu.style.maxHeight = menu.scrollHeight + "px";
+        topLine.style.transform = "translateY(0) rotate(45deg)";
+        middleLine.style.opacity = "0";
+        bottomLine.style.transform = "translateY(0) rotate(-45deg)";
+        aberto = true;
+        acabouDeAbrir = true;
+        setTimeout(() => { acabouDeAbrir = false; }, 500);
+    }
+
+    function fecharMenu() {
+        menu.style.maxHeight = "0px";
+        topLine.style.transform = "translateY(-8px) rotate(0)";
+        middleLine.style.opacity = "1";
+        bottomLine.style.transform = "translateY(8px) rotate(0)";
+        aberto = false;
+    }
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        aberto ? fecharMenu() : abrirMenu();
+    });
+
+    window.addEventListener('scroll', () => {
+        if (aberto && !acabouDeAbrir) fecharMenu();
+    });
+
+    // --- SCRIPT DE OFFSET DINÂMICO ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            // Ignora se o link for apenas "#"
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                e.preventDefault(); 
+
+                // 1. Se estiver no mobile, fecha o menu primeiro
+                if (aberto) fecharMenu();
+
+                // 2. MEDIÇÃO DINÂMICA: Pega a altura real da nav naquele momento
+                // Isso resolve a diferença entre mobile e desktop automaticamente
+                const navHeight = nav.offsetHeight; 
+                
+                // 3. Calcula a posição
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                // 4. Scroll suave manual
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                // 5. Atualiza a URL (opcional, para manter o histórico do navegador)
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
     </div>
 
     <!-- Menu mobile -->
@@ -623,7 +686,7 @@
 
 
 
-<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
+<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 md:scroll-mt-12">
     <div class="container mx-auto px-6">
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
@@ -813,61 +876,9 @@
     </div>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
 
-    const topLine = btn.querySelector('.top');
-    const middleLine = btn.querySelector('.middle');
-    const bottomLine = btn.querySelector('.bottom');
-
-    let aberto = false;
-    let acabouDeAbrir = false; // 🔥 controle
-
-    function abrirMenu() {
-        menu.style.maxHeight = menu.scrollHeight + "px";
-
-        topLine.style.transform = "rotate(45deg)";
-        middleLine.style.opacity = "0";
-        bottomLine.style.transform = "rotate(-45deg)";
-
-        aberto = true;
-
-        // bloqueia fechamento imediato por scroll
-        acabouDeAbrir = true;
-        setTimeout(() => {
-            acabouDeAbrir = false;
-        }, 1000);
-    }
-
-    function fecharMenu() {
-        menu.style.maxHeight = "0px";
-
-        topLine.style.transform = "translateY(-6px)";
-        middleLine.style.opacity = "1";
-        bottomLine.style.transform = "translateY(6px)";
-
-        aberto = false;
-    }
-
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        aberto ? fecharMenu() : abrirMenu();
-    });
-
-    // fechar ao clicar nos links
-    menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', fecharMenu);
-    });
-
-    // 🔥 fechar ao rolar (com proteção)
-    window.addEventListener('scroll', () => {
-        if (aberto && !acabouDeAbrir) {
-            fecharMenu();
-        }
-    });
-});
 </script>
+
+
 </body>
 </html>
