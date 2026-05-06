@@ -63,7 +63,7 @@
             display: flex;
             align-items: center;
         }
-
+        
         .hero-title {
             font-size: var(--title-hero);
             line-height: 0.97;
@@ -267,28 +267,53 @@
             .service-image-row .flat-media { aspect-ratio: 16 / 9; }
         }
     </style>
+    
+
+
 </head>
 
 <body class="text-zinc-100">
 
     <nav class="nav-style text-white sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-[var(--nav-y)] flex justify-between items-center" >
-            <div class="flex items-center">
-                <span class="text-2xl font-black tracking-tighter uppercase">
-                    Eletro <span class="text-yellow-500">Energia</span>
-                </span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8 font-bold text-[14px] uppercase tracking-[0.22em]">
-            <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
-                <a href="#atendimentos" class="hover:text-yellow-500 transition text-zinc-400">Serviços</a>
-                <a href="#estrutura" class="hover:text-yellow-500 transition text-zinc-400">Estrutura</a>
-                
-                <a href="#equipamentos" class="hover:text-yellow-500 transition text-zinc-400">Equipamentos</a>
-                <a href="#galeria" class="hover:text-yellow-500 transition text-zinc-400">Atendimentos</a>
-                <a href="#contato" class="bg-yellow-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all font-black">Contato</a>
-            </div>
+    <div class="container mx-auto px-6 py-[var(--nav-y)] flex justify-between items-center">
+
+        <!-- Logo -->
+        <div class="flex items-center">
+            <span class="text-2xl font-black tracking-tighter uppercase">
+                Eletro <span class="text-yellow-500">Energia</span>
+            </span>
         </div>
-    </nav>
+
+        <!-- Menu desktop -->
+        <div class="hidden md:flex items-center space-x-8 font-bold text-[14px] uppercase tracking-[0.22em]">
+            <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
+            <a href="#atendimentos" class="hover:text-yellow-500 transition text-zinc-400">Serviços</a>
+            <a href="#estrutura" class="hover:text-yellow-500 transition text-zinc-400">Estrutura</a>
+            <a href="#equipamentos" class="hover:text-yellow-500 transition text-zinc-400">Equipamentos</a>
+            <a href="#galeria" class="hover:text-yellow-500 transition text-zinc-400">Atendimentos</a>
+            <a href="#contato" class="bg-yellow-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all font-black">Contato</a>
+        </div>
+
+        <!-- Botão mobile -->
+        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+        </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-white/5">
+        <div class="flex flex-col text-center py-6 space-y-5 font-bold uppercase tracking-[0.2em]">
+            <a href="#sobre" class="text-zinc-400 hover:text-yellow-500">Sobre</a>
+            <a href="#atendimentos" class="text-zinc-400 hover:text-yellow-500">Serviços</a>
+            <a href="#estrutura" class="text-zinc-400 hover:text-yellow-500">Estrutura</a>
+            <a href="#equipamentos" class="text-zinc-400 hover:text-yellow-500">Equipamentos</a>
+            <a href="#galeria" class="text-zinc-400 hover:text-yellow-500">Atendimentos</a>
+            <a href="#contato" class="text-yellow-500">Contato</a>
+        </div>
+    </div>
+</nav>
 
     <header class="hero-bg">
         <div class="container mx-auto px-6 " style="margin-left: 8%;">
@@ -677,11 +702,13 @@
                     Localização
                 </h3>
 
-<p class="text-zinc-300 text-sm flex justify-between w-full px-[10px]">
+<p class="text-zinc-300 text-sm flex flex-col sm:flex-row sm:justify-between w-full px-[10px]">
     <span>Rua José do Patrocínio, 222</span>
-    <span>•</span>
+
+    <span class="hidden sm:inline">•</span>
     <span>CEP 84040-200</span>
-    <span>•</span>
+
+    <span class="hidden sm:inline">•</span>
     <span>Ponta Grossa - PR</span>
 </p>
 
@@ -754,6 +781,26 @@
     </div>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
 
+    if (btn && menu) {
+        // abrir/fechar botão
+        btn.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+        });
+
+        // fechar ao clicar em qualquer link
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    }
+});
+</script>
 </body>
 </html>
