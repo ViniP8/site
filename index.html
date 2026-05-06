@@ -279,12 +279,7 @@
 
 
 
-</style>
-
-    </style>
-    
-
-
+</style>    
 </head>
 
 <body class="text-zinc-100">
@@ -686,99 +681,197 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 md:scroll-mt-12">
+<section id="galeria" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 md:scroll-mt-12 overflow-hidden">
     <div class="container mx-auto px-6">
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
     
     <div class="marquee-wrapper relative">
-        <div class="marquee-content flex gap-4 animate-scroll">
-            
-            <div class="marquee-item"><img src="A1.jpg" onerror="this.src='A1.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A2.jpg" onerror="this.src='A2.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A3.jpg" onerror="this.src='A3.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A4.jpg" onerror="this.src='A4.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A5.jpg" onerror="this.src='A5.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A6.jpg" onerror="this.src='A6.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A7.jpg" onerror="this.src='A7.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A8.jpg" onerror="this.src='A8.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
-                        <div class="marquee-item"><img src="A12.jpg" onerror="this.src='A12.jpeg'" class="marquee-img" alt="Atendimento"></div>
-
-            <div class="marquee-item"><img src="A1.jpg" onerror="this.src='A1.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A2.jpg" onerror="this.src='A2.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A3.jpg" onerror="this.src='A3.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A4.jpg" onerror="this.src='A4.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A5.jpg" onerror="this.src='A5.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A6.jpg" onerror="this.src='A6.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A7.jpg" onerror="this.src='A7.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A8.jpg" onerror="this.src='A8.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A9.jpg" onerror="this.src='A9.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A10.jpg" onerror="this.src='A10.jpeg'" class="marquee-img" alt="Atendimento"></div>
-            <div class="marquee-item"><img src="A11.jpg" onerror="this.src='A11.jpeg'" class="marquee-img" alt="Atendimento"></div>
-                                    <div class="marquee-item"><img src="A12.jpg" onerror="this.src='A12.jpeg'" class="marquee-img" alt="Atendimento"></div>
+        <div id="marquee-dynamic" class="marquee-content flex gap-4">
+            <!-- Imagens via JS -->
         </div>
     </div>
+
 </section>
 
+<script>
+
+window.checkImage = function (src) {
+    return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(src);
+        img.onerror = () => resolve(false);
+        img.src = src;
+    });
+};
+
+window.marqueeData = {
+    posX: 0,
+    speed: 0.8,
+    container: null,
+    clickVelocity: 0
+};
+
+window.manualPush = function(direction) {
+    const pushAmount = window.innerWidth < 640 ? 250 : 450;
+
+    if (direction === 'right') {
+        window.marqueeData.clickVelocity -= pushAmount;
+    } else {
+        window.marqueeData.clickVelocity += pushAmount;
+    }
+};
+
+function update() {
+    const data = window.marqueeData;
+
+    if (data.container) {
+        const width = data.container.scrollWidth / 3;
+
+        data.posX -= data.speed;
+
+        // aplica clique
+        if (data.clickVelocity) {
+            data.posX += data.clickVelocity;
+            data.clickVelocity *= 0.85; // amortecimento
+            if (Math.abs(data.clickVelocity) < 0.1) {
+                data.clickVelocity = 0;
+            }
+        }
+
+        // loop correto (sem reset seco)
+        if (data.posX <= -width) {
+            data.posX += width;
+        }
+
+        if (data.posX > 0) {
+            data.posX -= width;
+        }
+
+        data.container.style.transform =
+            `translate3d(${data.posX}px, 0, 0)`;
+    }
+
+    requestAnimationFrame(update);
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('marquee-dynamic');
+    window.marqueeData.container = container;
+
+    if (!container) return;
+
+    let index = 1;
+    let foundImages = [];
+
+    while (index <= 20) {
+        const name = `A${index}`;
+        const src = await checkImage(`${name}.jpg`) || await checkImage(`${name}.jpeg`);
+        if (src) {
+            foundImages.push(src);
+            index++;
+        } else break;
+    }
+
+    if (foundImages.length > 0) {
+        const itemsHTML = foundImages.map(img => `
+            <div class="marquee-item">
+                <img src="${img}" class="marquee-img" alt="Atendimento">
+            </div>
+        `).join('');
+
+        container.innerHTML = itemsHTML + itemsHTML + itemsHTML;
+        window.marqueeData.baseWidth = container.scrollWidth / 3;
+
+        requestAnimationFrame(update);
+    }
+});
+</script>
+
 <style>
-/* Container de cada item */
 .marquee-item {
     flex-shrink: 0;
-    width: clamp(14rem, 16vw, 17.5rem); /* Largura responsiva */
-    aspect-ratio: 4 / 5; /* Força a proporção Retrato 4:5 */
-    background-color: #18181b; /* Cor de fundo caso a imagem demore a carregar (zinc-900) */
-    border-radius: 0.75rem; /* rounded-xl */
+    width: 280px;
+    aspect-ratio: 4 / 5;
+    background-color: #18181b;
+    border-radius: 0.75rem;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* A imagem em si */
-.marquee-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz o ZOOM automático para preencher os 4:5 sem distorcer */
-    object-position: center; /* Mantém o centro da foto visível */
-    display: block;
+.marquee-img { width: 100%; height: 100%; object-fit: cover; }
+
+.marquee-wrapper:hover .marquee-content {
+    animation-play-state: paused;
 }
 
-/* Estrutura do Marquee */
 .marquee-wrapper {
     width: 100%;
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .marquee-content {
     display: flex;
     width: max-content;
-    animation: scroll 60s linear infinite;
+    position: relative; /* Essencial para o 'left' funcionar */
+    left: 0;            /* Valor inicial */
+    will-change: transform, left;
+    /* Certifique-se de que NÃO exista 'animation:' aqui dentro */
 }
 
-/* Animação do Scroll */
-@keyframes scroll {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        /* Move exatamente metade do conteúdo (a parte duplicada) */
-        transform: translateX(calc(-50% - 0.5rem)); 
-    }
+
+
+.btn-scroll {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none; /* Impede selecionar texto ao segurar o botão */
 }
 
-/* Pausa ao passar o mouse */
-.marquee-wrapper:hover .marquee-content {
-    animation-play-state: paused;
-}
-
-/* Ajuste Responsivo para Celular */
 @media (max-width: 640px) {
-    .marquee-item {
-        width: clamp(11rem, 28vw, 12.5rem);
-    }
+    .marquee-item { width: 160px; }
+    .marquee-content { gap: 0.75rem; }
+}
+
+/* Container das setas */
+.marquee-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-scroll {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.btn-scroll:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.btn-scroll:active {
+    transform: scale(0.95);
 }
 </style>
 
@@ -882,3 +975,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </body>
 </html>
+
