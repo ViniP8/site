@@ -662,86 +662,95 @@
 }
 </style>
 
-
-<center>
-<footer id="contato" class="bg-zinc-950 py-16 border-t border-white/5 scroll-mt-12">
+<footer id="contato" class="bg-zinc-950 py-4 border-t border-white/5 scroll-mt-20">
     <div class="container mx-auto px-6">
-        <!-- Título alinhado com a grid -->
-         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Contato</h2>
-        
-        <div class="grid md:grid-cols-3 gap-8 items-start mb-16">
+<br>
+        <center><h2 class="text-2xl md:text-3xl font-black uppercase text-white mb-12">
+            Contato
+        </h2></center>
 
-            <!-- Coluna 1: Info Empresa -->
-            <div>
-                <h4 class="text-white font-black uppercase  text-base mb-5">
-                    Eletro Energia
-                </h4>
-                <p class="text-zinc-400 text-sm leading-relaxed mb-5 max-w-xs">
-                    Especialistas em manutenção e rebobinagem de motores elétricos desde 1998 em Ponta Grossa.
-                </p>
-                <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
-                <p class="text-zinc-600 md:text-base font-mono">
-                    CNPJ: 02.548.933/0001-43
-                    <br>
-                </p>
-                <br>
-                Email: <a href="mailto:MauroEletroEnergia@gmail.com">MauroEletroEnergia@gmail.com</a>
-            </div>
+        <div class="grid gap-6 md:grid-cols-2">
 
-            <!-- Coluna 2: Localização -->
-            <div>
-                <h4 class="text-white font-black uppercase  text-base mb-5">
+            <!-- CARD: Localização -->
+            <div class="bg-zinc-900/60 border border-white/5 rounded-2xl p-6 space-y-4 shadow-lg">
+                <h3 class="text-white font-bold uppercase text-sm tracking-wide">
                     Localização
-                </h4>
-                <p class="text-zinc-300 text-sm leading-relaxed mb-4">
-                    Rua José do Patrocínio, 222<br>
+                </h3>
+
+                <p class="text-zinc-300 text-sm leading-relaxed">
+                    Rua José do Patrocínio, 222 <br>CEP 84040-200<br>
                     Ponta Grossa - PR
                 </p>
-                <!-- MAPA MAIS COMPACTO -->
-                <div class="w-full h-32 rounded-lg overflow-hidden mb-3 border border-white/5">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.41008143215!2d-50.16099670923952!3d-25.107948285894203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e81a5e6e110fbf%3A0xa21c5626d2f2a3bc!2sEletro%20Energia%20-%20Motores%20El%C3%A9tricos%20Ltda!5e0!3m2!1spt-BR!2sus!4v1778025993586!5m2!1spt-BR!2sus"                     class="w-full h-full opacity-80 hover:grayscale-0 transition-all duration-500" 
+
+                <div class="w-full h-36 rounded-xl overflow-hidden border border-white/5">
+                    <iframe
+                        src="https://www.google.com/maps?q=Eletro+Energia+Motores+Elétricos+Ltda&output=embed"
+                        class="w-full h-full opacity-80"
                         loading="lazy">
                     </iframe>
                 </div>
-                <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.41008143215!2d-50.16099670923952!3d-25.107948285894203!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e81a5e6e110fbf%3A0xa21c5626d2f2a3bc!2sEletro%20Energia%20-%20Motores%20El%C3%A9tricos%20Ltda!5e0!3m2!1spt-BR!2sus!4v1778025993586!5m2!1spt-BR!2sus" target="_blank"
-                   class="text-yellow-500 hover:text-yellow-400 md:text-sm font-bold uppercase tracking-widest transition">
-                    Ver no Google Maps
+
+                <a href="https://maps.google.com/?q=Eletro+Energia+Motores+Elétricos+Ltda"
+                   target="_blank"
+                   class="text-yellow-500 hover:text-yellow-400 text-xs uppercase tracking-wider">
+                    Ver no mapa
                 </a>
             </div>
 
-            <!-- Coluna 3: WhatsApp (Agora alinhada no topo) -->
-            <div>
-                <h4 class="text-white font-black uppercase text-base mb-5">
-                    WhatsApp
-                </h4>
-                <a href="https://wa.me/5542999723775"
-                   class="group inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 transition-all duration-300 text-white px-6 py-3 rounded-md font-bold uppercase text-[20px] shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current">
+            <!-- CARD: Fale Conosco -->
+            <div class="bg-zinc-900/60 border border-white/5 rounded-2xl p-6 space-y-5 shadow-lg flex flex-col justify-between">
+
+                <div>
+                    <h3 class="text-white font-bold uppercase text-sm tracking-wide mb-4">
+                        Fale Conosco
+                    </h3>
+
+                    <p class="text-zinc-400 text-sm mb-6">
+                        Atendimento via WhatsApp
+                    </p>
+
+                    <a href="https://wa.me/5542999723775"
+                       class="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 transition text-white px-5 py-3 rounded-xl font-bold shadow-lg w-full">
+                        
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current">
                         <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.756 5.707 2.188 8.188L0 32l7.613-2.156a15.94 15.94 0 0 0 8.387 2.336h.006c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.23c-2.523 0-4.996-.676-7.156-1.957l-.512-.305-4.52 1.281 1.207-4.402-.332-.539a13.42 13.42 0 0 1-2.055-7.207c0-7.41 6.027-13.438 13.438-13.438s13.438 6.027 13.438 13.438-6.027 13.438-13.438 13.438zm7.383-10.094c-.402-.201-2.379-1.176-2.746-1.309-.367-.134-.635-.201-.904.201-.268.402-1.039 1.309-1.273 1.578-.234.268-.469.301-.871.1-.402-.201-1.699-.626-3.236-1.996-1.195-1.066-2.004-2.379-2.238-2.781-.234-.402-.025-.619.176-.82.18-.179.402-.469.603-.703.201-.234.268-.402.402-.67.134-.268.067-.502-.034-.703-.1-.201-.904-2.18-1.238-2.984-.326-.783-.657-.676-.904-.689l-.77-.013c-.268 0-.703.1-1.07.502s-1.402 1.371-1.402 3.342 1.438 3.873 1.637 4.141c.201.268 2.83 4.32 6.857 6.055.958.414 1.705.661 2.287.846.961.306 1.836.263 2.528.159.771-.115 2.379-.972 2.715-1.91.335-.938.335-1.742.234-1.91-.1-.168-.367-.268-.77-.469z"/>
                     </svg>
-                    Conversar
-                </a>
-                <br><br>
-                <div class="w-8 h-[2px] bg-yellow-500 mb-4"></div>
-                <p class="text-zinc-600 md:text-sm uppercase tracking-widest mt-5">
-                    Segunda a Sexta 
-                    <br>08h às 11h e das 13h às 17h
-                    <br><br>
-                   
-                </p>
-                Fone: <a href="tel:42999723775">(42) 99972-3775</a>
+
+                        WhatsApp
+                    </a>
+                </div>
+                <center>
+                     <div class="text-zinc-500 pt-2">
+                        Seg–Sex • 08h–11h / 13h–17h
+                    </div>
+                    </center>
+
+                <div class="space-y-2 text-sm text-zinc-400">
+                    <a href="tel:42999723775" class="block hover:text-white">
+                        (42) 99972-3775
+                    </a>
+
+                    <a href="mailto:MauroEletroEnergia@gmail.com"
+                       class="block hover:text-white break-all">
+                        MauroEletroEnergia@gmail.com
+                    </a>
+
+
+                </div>
+
             </div>
         </div>
 
-        <!-- Rodapé inferior -->
-        <div class="border-t border-white/5 pt-8 text-center">
-            <div class="text-zinc-600 md:text-sm uppercase font-small">
-                © 2026 Eletro Energia • Todos os direitos reservados
-            </div>
+        <!-- Rodapé -->
+        <div class="border-t border-white/5 mt-12 pt-6 text-center">
+            <p class="text-zinc-600 text-xs">
+                © 2026 Eletro Energia
+                <br>
+                CNPJ 02.548.933/0001-43
+            </p>
         </div>
     </div>
 </footer>
-</center>
 
 
 </body>
