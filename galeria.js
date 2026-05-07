@@ -7,8 +7,8 @@ async function loadGallery() {
 
     // Tenta carregar as imagens sequencialmente
     while (errorsInARow < maxErrors) {
-        const imgName = `A${index}`;
-        const extensions = ['.jpg', '.jpeg'];
+        const imgName = `Galeria/A${index}`;
+        const extensions = ['.jpeg'];
         let loaded = false;
 
         for (const ext of extensions) {
