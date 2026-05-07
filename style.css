@@ -11,7 +11,8 @@
             --nav-y: 0.65rem;
             
             /* Aumentado para mostrar melhor a fachada */
-            --hero-min-h: 80vh;
+            --min-height: 80vh;
+            --hero-min-h: 80dvh;
 
             --title-hero: clamp(2.5rem, 5vw, 4.25rem);
             --title-section: clamp(2rem, 3vw, 3rem);
@@ -20,6 +21,10 @@
             --text-small: 1rem;
             --text-micro: 0.9rem;
         }
+        
+        * {
+	    box-sizing: border-box;
+	}
 
         html {
             scroll-behavior: smooth;
@@ -125,34 +130,27 @@
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
         }
 
-       .media:hover img { transform: scale(1.05); }
+       @media (hover: hover) and (pointer: fine) {
+	    .media:hover img,
+	    .flat-media:hover img {
+		transform: scale(1.05);
+	    }
+	}
 
 	.flat-media {
 	    width: 100%;
 	    overflow: hidden;
 	    border-radius: 14px;
 	    background: transparent;
-
 	    position: relative;
-	    display: block;
-
-	    /* importante */
-	    line-height: 0;
 	}
 
 	.flat-media img {
 	    width: 100%;
 	    height: auto;
 	    display: block;
-
 	    border-radius: 14px;
-
-	    /* evita bugs do safari */
-	    -webkit-transform: translateZ(0);
-	    transform: translateZ(0);
-
-	    backface-visibility: hidden;
-	    -webkit-backface-visibility: hidden;
+	    transition: transform .35s cubic-bezier(.4, 0, .2, 1);
 	}
         .service-bubbles {
             display: grid;
