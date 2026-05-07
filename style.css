@@ -100,11 +100,9 @@
 
         /* AJUSTE DE IMAGENS FÁCIL */
         .media {
-            width: var(--w, 100%);
-            height: var(--h, auto);
-            aspect-ratio: var(--ratio, auto);
+
             overflow: hidden;
-            border-radius: var(--radius, 14px);
+            border-radius: 14px;
             background: transparent;
         }
 
@@ -120,11 +118,10 @@
         .media:hover img { transform: scale(1.05); }
 
         .flat-media {
-            width: var(--w, 100%);
-            height: var(--h, auto);
-            aspect-ratio: var(--ratio, auto);
+            width: auto;
+            height: 100%;
             overflow: hidden;
-            border-radius: var(--radius, 14px);
+            border-radius: 14px;
             background: transparent;
             border: none;
             box-shadow: none;
@@ -133,7 +130,7 @@
         .flat-media img {
             width: auto;
             height: 100%;
-            object-fit: var(--fit, contain);
+            object-fit: contain;
             display: block;
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
             border-radius: inherit;
