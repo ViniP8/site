@@ -125,27 +125,35 @@
             transition: transform .35s cubic-bezier(.4, 0, .2, 1);
         }
 
-        .media:hover img { transform: scale(1.05); }
+       .media:hover img { transform: scale(1.05); }
 
-        .flat-media {
-            width: auto;
-            height: 100%;
-            overflow: hidden;
-            border-radius: 14px;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
+	.flat-media {
+	    width: 100%;
+	    overflow: hidden;
+	    border-radius: 14px;
+	    background: transparent;
 
-        .flat-media img {
-            width: auto;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: transform .35s cubic-bezier(.4, 0, .2, 1);
-            border-radius: inherit;
-        }
+	    position: relative;
+	    display: block;
 
+	    /* importante */
+	    line-height: 0;
+	}
+
+	.flat-media img {
+	    width: 100%;
+	    height: auto;
+	    display: block;
+
+	    border-radius: 14px;
+
+	    /* evita bugs do safari */
+	    -webkit-transform: translateZ(0);
+	    transform: translateZ(0);
+
+	    backface-visibility: hidden;
+	    -webkit-backface-visibility: hidden;
+	}
         .service-bubbles {
             display: grid;
             grid-template-columns: 1;
