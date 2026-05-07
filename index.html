@@ -26,18 +26,18 @@
         </div>
 
         <!-- Menu desktop -->
-        <div class="hidden md:flex items-center space-x-8 font-bold text-[14px] uppercase tracking-[0.22em]">
-            <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
+        <div class="hidden lg:flex items-center space-x-8 font-bold text-[14px] uppercase tracking-[0.22em]">
+       <a href="#sobre" class="hover:text-yellow-500 transition text-zinc-400">Sobre</a>
             <a href="#atendimentos" class="hover:text-yellow-500 transition text-zinc-400">Serviços</a>
             <a href="#estrutura" class="hover:text-yellow-500 transition text-zinc-400">Estrutura</a>
-            <a href="#equipamentos" class="hover:text-yellow-500 transition text-zinc-400">Equipamentos</a>
+        <!--    <a href="#equipamentos" class="hover:text-yellow-500 transition text-zinc-400">Equipamentos</a> -->
             <a href="#galeria" class="hover:text-yellow-500 transition text-zinc-400">Atendimentos</a>
             <a href="#contato" class="bg-yellow-500 text-zinc-950 px-6 py-2.5 rounded-full hover:bg-yellow-400 transition-all font-black">Contato</a>
         </div>
 
         <!-- Botão mobile -->
 <!-- Botão corrigido -->
-<button id="menu-btn" class="md:hidden w-10 h-10 flex flex-col justify-center items-center relative z-50">
+<button id="menu-btn" class="lg:hidden w-10 h-10 flex flex-col justify-center items-center relative z-50">
     <!-- Note o -translate-y-2 para a linha do topo e translate-y-2 para a de baixo -->
     <span class="line top block w-6 h-[2px] bg-white absolute transition-all duration-300 -translate-y-2"></span>
     <span class="line middle block w-6 h-[2px] bg-white absolute transition-all duration-300"></span> 
@@ -89,7 +89,7 @@
                                 <!-- Card 4 -->
             <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
                 <p class="text-yellow-500 micro-label">Atendimento</p>
-                <p class="text-2xl sm:text-3xl md:text-4xl font-black leading-tight">Industrial</p>
+                <p class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black leading-tight">Industrial</p>
             </div>
             
                         <!-- Card 2 -->
@@ -193,6 +193,107 @@
     </div>
 </section>
 
+<!-- Assistência Técnica -->
+<section id="assistencia" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
+    <div class="container mx-auto px-6 max-w-6xl">
+        
+        <h2 class="section-title font-black uppercase mb-4">
+            Assistência <span class="text-yellow-500">Técnica</span>
+        </h2>
+
+        <div class="section-divider mb-12"></div>
+
+        <!-- Texto -->
+        <div class="max-w-4xl mx-auto mb-14 text-zinc-300 leading-relaxed text-center">
+            <p>
+                Trabalhamos com manutenção especializada e rebobinagem de motores elétricos, motobombas, motoredutores, sopradores e geradores das principais marcas do mercado nacional e internacional.
+            </p>
+        </div>
+
+ <!-- Grade de Marcas - Ordenada por relevância industrial (Motores) -->
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-5 items-center">
+
+    <!-- Tier 1: Líderes de Mercado e Grandes Multinacionais -->
+    <div class="brand-card">
+        <img src="logos/weg.svg" alt="WEG">
+    </div>
+    <div class="brand-card">
+        <img src="logos/siemens.svg" alt="Siemens">
+    </div>
+    <div class="brand-card">
+        <img src="logos/abb.svg" alt="ABB">
+    </div>
+    <div class="brand-card">
+        <img src="logos/sew.svg" alt="SEW Eurodrive">
+    </div>
+
+    <!-- Tier 2: Tradicionais e Especialistas em Motores/Bombas -->
+    <div class="brand-card">
+        <img src="logos/hercules.webp" alt="Hercules">
+    </div>
+    <div class="brand-card">
+        <img src="logos/voges.jpg" alt="Voges">
+    </div>
+    <div class="brand-card">
+        <img src="logos/ebara.svg" alt="Ebara">
+    </div>
+    <div class="brand-card">
+        <img src="logos/franklin-electric-logo.svg" alt="Franklin Electric">
+    </div>
+    <div class="brand-card">
+        <img src="logos/leao.svg" alt="Leão">
+    </div>
+    <div class="brand-card">
+        <img src="logos/Famac.png" alt="Famac">
+    </div>
+
+    <!-- Tier 3: Grandes Players Internacionais e Acionamentos -->
+    <div class="brand-card">
+        <img src="logos/Nidec.png" alt="Nidec">
+    </div>
+    <div class="brand-card">
+        <img src="logos/leroy-somer.svg" alt="Leroy Somer">
+    </div>
+    <div class="brand-card">
+        <img src="logos/general-electric.svg" alt="GE">
+    </div>
+    <div class="brand-card">
+        <img src="logos/schneider.svg" alt="Schneider">
+    </div>
+    <div class="brand-card">
+        <img src="logos/Danfoss.svg" alt="Danfoss">
+    </div>
+    <div class="brand-card">
+        <img src="logos/toshiba-3.svg" alt="Toshiba">
+    </div>
+
+    <!-- Tier 4: Equipamentos, Ar Comprimido e Grupos Geradores -->
+    <div class="brand-card">
+        <img src="logos/shulz.svg" alt="Shulz">
+    </div>
+    <div class="brand-card">
+        <img src="logos/atlas_copco.svg" alt="Atlas Copco">
+    </div>
+    <div class="brand-card">
+        <img src="logos/Stemac.png" alt="Stemac">
+    </div>
+    <div class="brand-card">
+        <img src="logos/bambozzi.webp" alt="Bambozzi">
+    </div>
+    <div class="brand-card">
+        <img src="logos/branco.png" alt="Branco">
+    </div>
+
+    <!-- Tier 5: Marcas de Nicho ou Grande Porte Específico -->
+    <div class="brand-card">
+        <img src="logos/marelli_motori.png" alt="Marelli Motori">
+    </div>
+    <div class="brand-card">
+        <img src="logos/Westinghouse.png" alt="Westinghouse">
+    </div>
+
+</div>
+</section>
 
 
 <!-- Nossos Serviços -->
