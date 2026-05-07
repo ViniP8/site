@@ -100,9 +100,19 @@
 
         /* AJUSTE DE IMAGENS FÁCIL */
         .media {
-
+            width: 100%;
+            height: auto;
             overflow: hidden;
             border-radius: 14px;
+            background: transparent;
+        }
+        
+         .mediaX {
+            width: var(--w, 100%);
+            height: var(--h, auto);
+            aspect-ratio: var(--ratio, auto);
+            overflow: hidden;
+            border-radius: var(--radius, 14px);
             background: transparent;
         }
 
