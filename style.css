@@ -14,12 +14,12 @@
             --min-height: 80vh;
             --hero-min-h: 80dvh;
 
-            --title-hero: clamp(2.5rem, 5vw, 4.25rem);
+            --title-hero: clamp(2.5rem, 4.8vw, 4.25rem);
             --title-section: clamp(2rem, 3vw, 3rem);
 
-            --text-base: 1.2rem;
-            --text-small: 1rem;
-            --text-micro: 0.9rem;
+            --text-base: 1.1rem;
+            --text-small: 0.9rem;
+            --text-micro: 0.8rem;
         }
         
         * {
