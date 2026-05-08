@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="btn.js"></script>
+    <script src="js/btn.js"></script>
    
 
 </head>
@@ -77,14 +77,14 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
                 <p class="text-yellow-500 micro-label">Anos no mercado</p>
-                <p id="contador-anos" class="text-2xl sm:text-3xl md:text-4xl font-black">28+</p>
+                <p id="contador-anos" class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black">28+</p>
             </div>
 
             
                         <!-- Card 3 -->
             <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
                 <p class="text-yellow-500 micro-label">Área própria</p>
-                <p id="contador-area" class="text-2xl sm:text-3xl md:text-4xl font-black">2300m²</p>
+                <p id="contador-area" class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black">2300m²</p>
             </div>
                                 <!-- Card 4 -->
             <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
@@ -95,7 +95,7 @@
                         <!-- Card 2 -->
             <div class="stats-card min-h-[120px] sm:min-h-[150px] p-4 rounded-2xl flex flex-col items-center justify-center text-center">
                 <p class="text-yellow-500 micro-label">Fundação</p>
-                <p class="text-2xl sm:text-3xl md:text-4xl font-black">1998</p>
+                <p class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-black">1998</p>
             </div>
         </div>
     </div>
@@ -109,15 +109,15 @@
 
 <!-- Sobre Nós -->
 <section id="sobre" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
-    <div class="container mx-auto px-6 max-w-6xl">
+    <div class="container mx-auto px-8 max-w-7xl">
         <h2 class="section-title font-black uppercase mb-4">Sobre <span class="text-yellow-500">Nós</span></h2>
 
-        <div class="section-divider mb-12"></div>
+        <div class="section-divider mb-6"></div>
 
-	<div class="block md:hidden" style="padding-bottom: 10px"><img class="media" src="Fachada.jpeg"></div>
+	<div class="block md:hidden" style="padding-bottom: 16px"><img class="media" src="img/Fachada.jpeg"></div>
 
         <!-- Texto Institucional -->
-        <div class="max-w-4xl mx-auto mb-16 text-zinc-300 leading-relaxed text-center">
+        <div class="max-w-5xl mx-auto mb-6 text-zinc-300 leading-relaxed text-center">
             <p class="mb-6">
                 Fundada em 1998, em Ponta Grossa, a <strong>Eletro Energia</strong> tornou-se referência regional na manutenção e rebobinagem de máquinas elétricas industriais. Nossa trajetória é pautada pelo compromisso com a qualidade e atendimento especializado.
             </p>
@@ -133,7 +133,7 @@
                 
                 <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                     <div class="mediaX flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 14rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
-                        <img src="Mauro.jpeg" alt="Mauro Francisco Penckowski">
+                        <img src="img/Mauro.jpeg" alt="Mauro Francisco Penckowski">
                     </div>
                     
                     <div class="flex-1">
@@ -142,13 +142,13 @@
                             Mauro Francisco <br>Penckowski
                         </h3>
                         
-                        <ul class="space-y-3 text-zinc-300 text-sm">
+                        <ul class="space-y-3 text-zinc-300 text-[1em]">
                             <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-yellow-500 mt-1"></i>
+                                <i class="fa-solid fa-building text-yellow-500 mt-1"></i>
                                 <span>Fundador da Eletro Energia Motores Elétricos.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-yellow-500 mt-1"></i>
+                                <i class="fa-solid fa-calendar  text-yellow-500 mt-1"></i>
                                 <span>Mais de <span id="contador-experiencia" class="numero-grande">50 anos</span> de experiência em máquinas elétricas.</span>
                             </li>
                         </ul>
@@ -156,14 +156,14 @@
                 </div>
             </div>
             
-	<script src="contador.js"></script>
+	<script src="js/contador.js"></script>
             <!-- Vinicius -->
             <div class="profile-card rounded-[2rem] p-8 md:p-10 border border-white/5 relative overflow-hidden group">
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-all"></div>
 
                 <div class="flex flex-col lg:flex-row gap-8 items-center lg:items-start">
                     <div class="mediaX flex-shrink-0 shadow-2xl border-2 border-yellow-500/20" style="--w: 11.25rem; --h: 18.75rem; --fit: cover; --radius: 1.25rem;">
-                        <img src="MaquinasEletricasMauroVinicius.jpeg" alt="Vinícius Penckowski">
+                        <img src="img/MaquinasEletricasMauroVinicius.jpeg" alt="Vinícius Penckowski">
                     </div>
                     
                     <div class="flex-1">
@@ -172,13 +172,13 @@
                             Vinícius <br>Penckowski
                         </h3>
                         
-                        <ul class="space-y-3 text-zinc-300 text-sm">
+                        <ul class="space-y-3 text-zinc-300 text-[1em]">
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-graduation-cap text-yellow-500 mt-1"></i>
                                 <span>Engenheiro Eletricista formado pela UTFPR.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fas fa-award text-yellow-500 mt-1"></i>
+                                <i class="fas fa-graduation-cap text-yellow-500 mt-1"></i>
                                 <span>Mestre em Engenharia Industrial pelo IPB (Portugal).</span>
                             </li>
                             <li class="flex items-start gap-3">
@@ -195,23 +195,23 @@
 
 <!-- Assistência Técnica -->
 <section id="assistencia" class="section-pad-tight section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
-    <div class="container mx-auto px-6 max-w-6xl">
+	<div class="mx-auto w-[85vw]">
         
         <h2 class="section-title font-black uppercase mb-4">
             Assistência <span class="text-yellow-500">Técnica</span>
         </h2>
 
-        <div class="section-divider mb-12"></div>
+        <div class="section-divider mb-6"></div>
 
         <!-- Texto -->
-        <div class="max-w-4xl mx-auto mb-14 text-zinc-300 leading-relaxed text-center">
+        <div class="max-w-5xl mx-auto mb-12 text-zinc-300 leading-relaxed text-center">
             <p>
                 Trabalhamos com manutenção especializada e rebobinagem de motores elétricos, motobombas, motoredutores, sopradores e geradores das principais marcas do mercado nacional e internacional.
             </p>
         </div>
 
  <!-- Grade de Marcas - Ordenada por relevância industrial (Motores) -->
-<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-5 items-center">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 items-center">
 
     <!-- Tier 1: Líderes de Mercado e Grandes Multinacionais -->
     <div class="brand-card">
@@ -307,7 +307,7 @@
 
 <!-- Nossos Serviços -->
     <section id="atendimentos" class="section-pad scroll-mt-12">
-        <div class="container mx-auto px-6">
+	<div class="mx-auto w-[85vw]">
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Serviços</span></h2>
             <div class="section-divider mb-12"></div>
             
@@ -348,7 +348,7 @@
                         <!-- Imagem 1: Motor 2000CV -->
                         <div class="flat-media group relative h-auto overflow-hidden shadow-2xl" 
                              style="--radius: 24px; background: rgba(0,0,0,0.2);">
-                            <img src="Motor2000CV.jpg" 
+                            <img src="img/Motor2000CV.jpeg" 
                                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                                  style="border-radius: 24px;" 
                                  alt="Motor 2000CV">
@@ -360,7 +360,7 @@
                         <!-- Imagem 2: Motor Suspenso -->
                         <div class="flat-media group relative h-auto overflow-hidden shadow-2xl" 
                              style="--radius: 24px; background: rgba(0,0,0,0.2);">
-                            <img src="550cv.jpg" 
+                            <img src="img/550cv.jpeg" 
                                  class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                                  style="border-radius: 24px;" 
                                  alt="Motor Suspenso">
@@ -377,7 +377,7 @@
 
 <!-- Nossa Estrutura -->
     <section id="estrutura" class="section-pad-tight bg-zinc-900/25 border-y border-white/5 scroll-mt-12">
-        <div class="container mx-auto px-6">
+	<div class="mx-auto w-[85vw]">
             <h2 class="section-title font-black uppercase mb-8">Nossa <span class="text-yellow-500">Estrutura</span></h2>
             <div class="section-divider mb-12"></div>
             
@@ -422,7 +422,7 @@
                 <div class="lg:col-span-6 flex flex-col gap-6 h-full">
                     <!-- Imagem 1 -->
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="BobinagemManual.jpeg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
+                        <img src="img/BobinagemManual.jpeg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Bobinagem Manual">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="text-xs md:text-sm font-bold uppercase tracking-widest text-yellow-500">Processos de Precisão</span>
                         </div>
@@ -430,7 +430,7 @@
 
                     <!-- Imagem 2 -->
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="VistaInterna2.jpg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
+                        <img src="img/VistaInterna2.jpg" class=" w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Vista Interna">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="text-xs md:text-sm font-bold uppercase tracking-widest text-yellow-500">Amplo Espaço</span>
                         </div>
@@ -438,7 +438,7 @@
 
                     <!-- Imagem 3 (Repetida) -->
                     <div class="flat-media group relative overflow-hidden" style="--radius: 24px;; background: rgba(0,0,0,0.2);">
-                        <img src="MotorSuspenso.jpg" class="w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
+                        <img src="img/MotorSuspenso.jpg" class="w-full object-contain transition-transform duration-500 group-hover:scale-105" alt="Tecnologia">
                         <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
                             <span class="text-xs md:text-sm font-bold uppercase tracking-widest text-yellow-500">Qualidade Garantida</span>
                         </div>
@@ -448,23 +448,25 @@
             </div>
         </div>
     </section>
+    
+    
     <!-- Equipamentos Grid -->
     <section id="equipamentos" class="section-pad scroll-mt-12">
         <div class="container mx-auto px-6">
             <h2 class="section-title font-black uppercase mb-8">Nossos <span class="text-yellow-500">Equipamentos</span></h2>
                         <div class="section-divider mb-12"></div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Estufas.jpeg"></div><p class="text-center md:text-sm mt-2">Estufas</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Pintura.jpeg"></div><p class="text-center md:text-sm mt-2">Cabine de pintura</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="BobinadeiraAutomatica.jpg"></div><p class="text-center md:text-sm mt-2">Bobinadeira automática</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Balanceador.jpeg"></div><p class="text-center md:text-sm mt-2">Balanceador</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Estufas.jpeg"></div><p class="text-center md:text-sm mt-2">Estufas</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Pintura.jpeg"></div><p class="text-center md:text-sm mt-2">Cabine de pintura</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Bobinadeira.jpeg"></div><p class="text-center md:text-sm mt-2">Bobinadeira automática</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Balanceador.jpeg"></div><p class="text-center md:text-sm mt-2">Balanceador</p></div>
             </div>
             <br>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Paineis1.jpeg"></div><p class="text-center md:text-sm mt-2">Painéis</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="guia1.jpeg"></div><p class="text-center md:text-sm mt-2">Suportes</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="TesteCC.jpeg"></div><p class="text-center md:text-sm mt-2">Testes CC/CA</p></div>
-                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="Tanque.jpeg"></div><p class="text-center md:text-sm mt-2">Tanque de envernizamento</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Paineis1.jpeg"></div><p class="text-center md:text-sm mt-2">Painéis</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/guia1.jpeg"></div><p class="text-center md:text-sm mt-2">Suportes</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/TesteCC.jpeg"></div><p class="text-center md:text-sm mt-2">Testes CC/CA</p></div>
+                <div class="flex flex-col items-center"><div class="media w-full" style="--ratio: 4/3;"><img src="img/Tanque.jpeg"></div><p class="text-center md:text-sm mt-2">Tanque de envernizamento</p></div>
             </div>
         </div>
     </section>
@@ -476,7 +478,9 @@
         <h2 class="section-title font-black uppercase mb-8 text-white text-3xl">Atendimentos</h2>
     </div>
                 <div class="section-divider mb-12"></div>
-    
+     <div class="flex gap-3">
+                
+            </div>
     <div class="marquee-wrapper relative overflow-hidden">
         <div id="marquee-dynamic" class="marquee-content flex gap-4 animate-scroll">
             <!-- As imagens entrarão aqui via JS -->
@@ -485,7 +489,7 @@
 </section>
  
 <link rel="stylesheet" href="galeria.css">
-<script src="galeria.js"></script>
+<script src="js/galeria.js"></script>
 
 
 <footer id="contato" class="bg-zinc-950 py-4 border-t border-white/5 scroll-mt-20">
